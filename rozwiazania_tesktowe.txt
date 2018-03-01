@@ -1,0 +1,13 @@
+3.2.4 UML diagram:
+https://drive.google.com/file/d/1FOCU3PVdsIbdJp1pdQPjLzPb-In64F7r/view?usp=sharing
+
+3.2.5* Kiedy warto (lub trzeba) korzystać z adaptera klasy (wariant z projektu stażysty)?
+Należałoby zastosować ten typ adapteru w momencie gdy musimy przeładować metody obiektu adaptowanego. W tym przypadku obiektu klasy "DrawPanelController".
+Próbując stworzyć analogię: założmy, że nasz plotter wykonuje rysunki na czerwono. DrawPanelController podczas wywoływania funkcji drawLine stworzyłby jednak linię czarną, a więc symulacja nie pokrywałabym się do końca z tym co w rzeczywistości pojawiłoby się na ploterze. W takim wypadku być może moglibyśmy zechcieć przeciążyć tę metodę drawLine (a w tym celu użyc adaptera klasowego) aby na symulacji linia także pojawiła się jako czerwona.
+
+
+***
+Roznica miedzy Adapterem klasowym i obiektowym:
+"Do stworzenia adaptera klasowego wykorzystywane jest wielokrotne dziedziczenie. Klasa adaptera dziedziczy prywatnie po klasie adaptowanej oraz publicznie implementuje interfejs klienta[1]. W przypadku tego adaptera wywołanie funkcji jest przekierowywane do bazowej klasy adaptowanej[4].
+
+W przypadku adaptera obiektowego klasa adaptera dziedziczy interfejs klienta oraz zawiera w sobie klasę adaptowaną. Rozwiązanie takie umożliwia oddzielenie klasy klienta od klasy adaptowanej[1]. Komplikuje to proces przekazywania żądania: klient wysyła je do adaptera wywołując jedną z jego metod. Następnie adapter konwertuje wywołanie na jedno bądź kilka wywołań i kieruje je do obiektu/obiektów adaptowanych. Te przekazują wyniki działania bezpośrednio do klienta[1][4]."
