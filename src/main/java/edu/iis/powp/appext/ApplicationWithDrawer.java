@@ -26,12 +26,12 @@ public class ApplicationWithDrawer {
 	    	
 	        Application.addComponent(DriverManager.class);
 	        Application.addComponent(Context.class);
-	        
+	        //this code below is responsible for main application window
 	        Context context = Application.getComponent(Context.class);
 	        
-	        setupDrawerPlugin(context);
+	        setupDrawerPlugin(context); //this line is responsible for part of right page of window where should be drawing
 	        
-	        context.setVisibility(true);	
+	        context.setVisibility(true); //it is rensponsible for visibility of main application window 
 	    }
 	}
 
@@ -40,7 +40,8 @@ public class ApplicationWithDrawer {
 	 * 
 	 * @param context Application context.
 	 */
-	private static void setupDrawerPlugin(Context context) {    
+	private static void setupDrawerPlugin(Context context) {
+		
 		SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 	
 		Application.addComponent(DrawPanelController.class);
