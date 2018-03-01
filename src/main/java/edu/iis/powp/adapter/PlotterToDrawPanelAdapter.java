@@ -16,12 +16,10 @@ public class PlotterToDrawPanelAdapter implements IPlotter
 	private DrawPanelController drawPanelController;
 	
 	private int startX = 0, startY = 0;
-	private JPanel drawArea;
 	
-    public PlotterToDrawPanelAdapter(DrawPanelController drawPanelController, JPanel drawArea) {
+    public PlotterToDrawPanelAdapter(DrawPanelController drawPanelController) {
 		super();
 		this.drawPanelController = drawPanelController;
-		drawPanelController.initialize(drawArea);
 	}
     
 	@Override

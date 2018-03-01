@@ -44,7 +44,7 @@ public class TestPlotSoftPatterns
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
 		Application.addComponent(DrawPanelController.class);
-		IPlotter plotter = new PlotterToDrawPanelAdapter(Application.getComponent(DrawPanelController.class), context.getFreePanel());
+		IPlotter plotter = new PlotterToDrawPanelAdapter(Application.getComponent(DrawPanelController.class));
 		context.addDriver("Simulator", plotter);
 
 		context.updateDriverInfo();
