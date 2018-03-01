@@ -7,14 +7,14 @@ import edu.kis.powp.drawer.shape.LineFactory;
 
 
 /**
- * Plotter adapter to drawer with several bugs. 
+ * Plotter adapter to drawer.
  */
-public class MyAdapter implements IPlotter
+public class SimulationPlotterAdapter implements IPlotter
 { 
 	private int startX = 0, startY = 0;
     DrawPanelController drawPanelController;
 
-    public MyAdapter(DrawPanelController drawPanel) {
+    public SimulationPlotterAdapter(DrawPanelController drawPanel) {
         this.drawPanelController = drawPanel;
     }
     
@@ -39,6 +39,6 @@ public class MyAdapter implements IPlotter
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "SimulationPlotterAdapter";
     }
 }

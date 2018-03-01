@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.SimulationPlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -20,7 +20,7 @@ public class TestPlotSoftPatterns
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 		
     /**
-	 * Setup test concerning preset figures in context.
+	 * Setup tests concerning preset figures in context.
 	 * 
 	 * @param context Application context.
 	 */
@@ -42,8 +42,8 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
-		IPlotter plotter = new MyAdapter(ApplicationWithDrawer.getDrawPanelController());
-		context.addDriver("Buggy Simulator", plotter);
+		IPlotter plotter = new SimulationPlotterAdapter(ApplicationWithDrawer.getDrawPanelController());
+		context.addDriver("Simulation Plotter", plotter);
 
 		context.updateDriverInfo();
 	}
