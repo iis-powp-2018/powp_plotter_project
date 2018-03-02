@@ -1,10 +1,5 @@
 package edu.iis.powp.gui;
 
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.MyAdapter;
@@ -16,6 +11,11 @@ import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class TestPlotSoftPatterns
@@ -59,8 +59,9 @@ public class TestPlotSoftPatterns
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
         		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
         defaultDrawerWindow.setVisible(true);
+
 	}
-	
+
 	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
@@ -88,9 +89,9 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
+
                 setupDefaultDrawerVisibilityManagement(context);
-                
+
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
