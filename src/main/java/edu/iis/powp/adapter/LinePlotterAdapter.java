@@ -5,20 +5,20 @@ import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 
-
 /**
- * Plotter adapter to drawer.
+ * Plotter adapter to LineFactory.
  */
-public class SimulationPlotterAdapter implements IPlotter
-{ 
-	private int startX = 0, startY = 0;
+public class LinePlotterAdapter implements IPlotter {
+    private int startX = 0, startY = 0;
     DrawPanelController drawPanelController;
+    ILine line;
 
-    public SimulationPlotterAdapter(DrawPanelController drawPanel) {
+    public LinePlotterAdapter(DrawPanelController drawPanel, ILine line) {
         this.drawPanelController = drawPanel;
+        this.line = line;
     }
-    
-	@Override
+
+    @Override
     public void setPosition(int x, int y)
     {
         this.startX = x;
@@ -28,17 +28,16 @@ public class SimulationPlotterAdapter implements IPlotter
     @Override
     public void drawTo(int x, int y)
     {
-        ILine line = LineFactory.getBasicLine();
-    	line.setStartCoordinates(this.startX, this.startY);
+        line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-		drawPanelController.drawLine(line);
+        drawPanelController.drawLine(line);
         setPosition(x, y);
     }
 
     @Override
     public String toString()
     {
-        return "SimulationPlotterAdapter";
+        return "LinePlotterAdapter";
     }
 }
