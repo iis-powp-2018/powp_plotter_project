@@ -7,7 +7,8 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.PlotterToDrawerAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -16,6 +17,7 @@ import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.iis.powp.adapter.LinePlotterAdapter;;
 
 
 public class TestPlotSoftPatterns
@@ -30,7 +32,8 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	
+		context.addTest("Figure Joe 2", (e) -> {FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());});
 	}
 
 	/**
@@ -43,8 +46,15 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
+		
+		IPlotter plotter = new PlotterToDrawerAdapter();
+		
 		context.addDriver("Buggy Simulator", plotter);
+		
+		IPlotter plotterWithSpecialLine = new LinePlotterAdapter();
+		
+		context.addDriver("Ploter with special line", plotterWithSpecialLine);
+			
 
 		context.updateDriverInfo();
 	}
@@ -57,8 +67,9 @@ public class TestPlotSoftPatterns
 	private static void setupDefaultDrawerVisibilityManagement(Context context) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
-        		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
+        		new SelectChangeVisibleOptionListener(defaultDrawerWindow), false);
+        defaultDrawerWindow.setVisible(false);
+        
 	}
 	
 	/**
