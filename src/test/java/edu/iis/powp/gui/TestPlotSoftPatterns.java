@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.PloterDrawerAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -43,7 +43,7 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
+		IPlotter plotter = new PloterDrawerAdapter();
 		context.addDriver("Buggy Simulator", plotter);
 
 		context.updateDriverInfo();
@@ -54,13 +54,14 @@ public class TestPlotSoftPatterns
 	 * 
 	 * @param context Application context.
 	 */
+	/*
 	private static void setupDefaultDrawerVisibilityManagement(Context context) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
         		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
         defaultDrawerWindow.setVisible(true);
 	}
-	
+	*/
 	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
@@ -89,7 +90,7 @@ public class TestPlotSoftPatterns
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
                 
-                setupDefaultDrawerVisibilityManagement(context);
+                //setupDefaultDrawerVisibilityManagement(context);
                 
             	setupDrivers(context);
             	setupPresetTests(context);
