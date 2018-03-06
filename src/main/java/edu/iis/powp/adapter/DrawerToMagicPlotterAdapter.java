@@ -32,8 +32,9 @@ public class DrawerToMagicPlotterAdapter extends DrawPanelController implements 
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
-        line.setStartCoordinates(-this.startX, -this.startY);
+        this.startX = x;
+        this.startY = y;
+        
         ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
 
