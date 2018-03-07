@@ -41,10 +41,11 @@ public class TestPlotSoftPatterns
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
-		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
+
 		
 		IPlotter plotter = new IPlotterAndDrawPanelControllerAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+		context.addDriver("Working Simulator", plotter);
+		Application.getComponent(DriverManager.class).setCurrentPlotter(plotter);
 
 		context.updateDriverInfo();
 	}
@@ -88,8 +89,7 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
+
                 
             	setupDrivers(context);
             	setupPresetTests(context);
