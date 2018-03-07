@@ -31,10 +31,7 @@ public class PloterDrawerAdapter extends DrawPanelController implements IPlotter
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-
-		ApplicationWithDrawer.getDrawPanelController().drawLine(line);
-		line.setStartCoordinates(-this.startX, -this.startY);
-
+        setPosition(x, y);
 		ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
 
