@@ -54,17 +54,6 @@ public class TestPlotSoftPatterns
 		context.updateDriverInfo();
 	}
 
-	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
-	 * @param context Application context.
-	 */
-	private static void setupDefaultDrawerVisibilityManagement(Context context) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-        context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
-        		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
-	}
 	
 	/**
 	 * Setup menu for adjusting logging settings.
