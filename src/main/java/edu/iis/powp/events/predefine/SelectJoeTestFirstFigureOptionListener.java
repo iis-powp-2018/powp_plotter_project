@@ -7,7 +7,7 @@ import edu.iis.client.plottermagic.preset.FiguresJoe;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
 
-public class SelectTestFirstFigureOptionListener implements ActionListener
+public class SelectJoeTestFirstFigureOptionListener implements ActionListener
 {
 
     @Override

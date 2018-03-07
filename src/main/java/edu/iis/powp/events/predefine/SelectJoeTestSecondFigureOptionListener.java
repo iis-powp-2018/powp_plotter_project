@@ -7,7 +7,7 @@ import edu.iis.powp.app.DriverManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class SelectTestSecondFigureOptionListener implements ActionListener
+public class SelectJoeTestSecondFigureOptionListener implements ActionListener
 {
 
     @Override

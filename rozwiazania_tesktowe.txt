@@ -5,6 +5,9 @@ https://drive.google.com/file/d/1FOCU3PVdsIbdJp1pdQPjLzPb-In64F7r/view?usp=shari
 Należałoby zastosować ten typ adapteru w momencie gdy musimy przeładować metody obiektu adaptowanego. W tym przypadku obiektu klasy "DrawPanelController".
 Próbując stworzyć analogię: założmy, że nasz plotter wykonuje rysunki na czerwono. DrawPanelController podczas wywoływania funkcji drawLine stworzyłby jednak linię czarną, a więc symulacja nie pokrywałabym się do końca z tym co w rzeczywistości pojawiłoby się na ploterze. W takim wypadku być może moglibyśmy zechcieć przeciążyć tę metodę drawLine (a w tym celu użyc adaptera klasowego) aby na symulacji linia także pojawiła się jako czerwona.
 
+3.4.3.
+Tak naprawdę takie rozwiązanie jest tak samo daleko od adaptera klasowego jak i obiektowego, ze względu na fakt, że z jednej strony mamy doczynienia z dziedziczeniem, przy jednoczesnym nieimplementowaniu interfejsu klienta.
+Być może można powiedzieć, że jest to Wzorzez "Dekorator".
 
 ***
 Roznica miedzy Adapterem klasowym i obiektowym:
