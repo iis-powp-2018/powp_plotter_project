@@ -1,11 +1,11 @@
 package edu.iis.powp.adapter;
 
 import edu.iis.client.plottermagic.IPlotter;
-import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
-import javax.swing.*;
+import javax.swing.JPanel;
+
 
 /**
  * Plotter adapter to drawer with several bugs. 
@@ -16,10 +16,9 @@ public class MyAdapter extends DrawPanelController implements IPlotter
 	
     public MyAdapter() {
 		super();
-		
 	}
     
-	@Override
+    @Override
     public void setPosition(int x, int y)
     {
         this.startX = x;
@@ -32,35 +31,7 @@ public class MyAdapter extends DrawPanelController implements IPlotter
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-
         drawLine(line);
-    }
-    
-    //@Override
-//    public void initialize(JPanel drawArea)
-  //  {
-  //  	super.initialize(drawArea);
- //   }
-    
-    public void setHandle ( JPanel windowHandle )
-    {
-    
-        this.drawArea = windowHandle;
-    }
-    
-    @Override
-    public void drawLine(final ILine line)
-    {
-    	try
-    	{
-    	//	drawArea.drawLine((ILine) line.clone());
-		}
-        
-        catch ( Exception e )
-    	{
-			//printStackTrace();
-		}
-    	drawArea.repaint();
     }
 
     @Override
@@ -68,7 +39,5 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     {
         return "@Q!$!@$!#@$(*#@&Q(%^*#@";
     }
-    
-    
-    	private JPanel drawArea;
+ 
 }

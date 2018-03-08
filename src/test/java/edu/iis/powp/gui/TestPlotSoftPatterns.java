@@ -45,7 +45,7 @@ public class TestPlotSoftPatterns
 		
 		IPlotter plotter = new MyAdapter();
 		context.addDriver("Buggy Simulator", plotter);
-
+                ((DrawPanelController)plotter).initialize(context.getFreePanel());
 		context.updateDriverInfo();
 	}
 
@@ -98,5 +98,5 @@ public class TestPlotSoftPatterns
 
         });
     }
-
+ 
 }
