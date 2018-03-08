@@ -7,7 +7,9 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.LinePlotterAdapter;
+import edu.iis.powp.adapter.PlotterDrawerAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -29,8 +31,9 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	   
+		//added figureScripts2 test for Pat Tern 
+		context.addTest("Figure Joe 2", (e) -> {FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());});
 	}
 
 	/**
@@ -43,9 +46,12 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
+		IPlotter plotter = new PlotterDrawerAdapter();
 		context.addDriver("Buggy Simulator", plotter);
-
+		//added in context of added LinePlotterAdapter 
+		IPlotter specialPlotter=new LinePlotterAdapter();
+		context.addDriver("Plotter with special line", specialPlotter);
+		//
 		context.updateDriverInfo();
 	}
 
@@ -88,12 +94,11 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
-                
-            	setupDrivers(context);
-            	setupPresetTests(context);
-            	setupLogger(context);
+                //commented because additional window is unnecessary
+                //setupDefaultDrawerVisibilityManagement(context);
+                 setupDrivers(context);
+             	setupPresetTests(context);
+              	setupLogger(context);
             }
 
         });
