@@ -32,6 +32,7 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
         drawLine(line);
+        setPosition(x,y);
     }
 
     @Override
