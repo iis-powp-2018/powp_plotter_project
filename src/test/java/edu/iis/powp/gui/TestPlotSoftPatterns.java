@@ -30,7 +30,8 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+	    context.addTest("Envelope", selectTestFigureOptionListener);
+		context.addTest("Unknown", selectTestFigureOptionListener);	        
 	}
 
 	/**
@@ -44,7 +45,7 @@ public class TestPlotSoftPatterns
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
 		IPlotter plotter = new MyAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+		context.addDriver("Simulator", plotter);
 
 		context.updateDriverInfo();
 	}
@@ -58,7 +59,7 @@ public class TestPlotSoftPatterns
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
         		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
+        defaultDrawerWindow.setVisible(false);
 	}
 	
 	/**
