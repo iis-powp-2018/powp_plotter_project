@@ -7,16 +7,14 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.DrawerToMagicPlotterAdapter;
+import edu.iis.powp.adapter.DottedLineDrawerToMagicPlotterAdapter;
+import edu.iis.powp.adapter.SolidLineDrawerToMagicPlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener1;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
-import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
-import edu.kis.powp.drawer.panel.DrawPanelController;
 
 
 public class TestPlotSoftPatterns
@@ -41,13 +39,16 @@ public class TestPlotSoftPatterns
 	 * 
 	 * @param context Application context.
 	 */
-	private static void setupDrivers(Context context) {
+	private static void setupDrivers(Context context) {		
+		IPlotter solidLinePlotter = new SolidLineDrawerToMagicPlotterAdapter();
+		context.addDriver("Solid Line Simulator", solidLinePlotter);
+		Application.getComponent(DriverManager.class).setCurrentPlotter(solidLinePlotter);
+		
+		IPlotter dottedLinePlotter = new DottedLineDrawerToMagicPlotterAdapter();
+		context.addDriver("Dotted Line Simulator", dottedLinePlotter);
+		
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
-		
-		IPlotter plotter = new DrawerToMagicPlotterAdapter();
-		context.addDriver("Working Simulator", plotter);
-		Application.getComponent(DriverManager.class).setCurrentPlotter(plotter);
 
 		context.updateDriverInfo();
 	}

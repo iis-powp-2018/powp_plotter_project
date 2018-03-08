@@ -10,11 +10,11 @@ import edu.kis.powp.drawer.shape.LineFactory;
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class DrawerToMagicPlotterAdapter extends DrawPanelController implements IPlotter
+public class DottedLineDrawerToMagicPlotterAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
 	
-    public DrawerToMagicPlotterAdapter() {
+    public DottedLineDrawerToMagicPlotterAdapter() {
 		super();
 	}
     
@@ -28,12 +28,13 @@ public class DrawerToMagicPlotterAdapter extends DrawPanelController implements 
     @Override
     public void drawTo(int x, int y)
     {
-        ILine line = LineFactory.getBasicLine();
+        ILine line = LineFactory.getDottedLine();
+        
+        
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-        this.startX = x;
-        this.startY = y;
+        setPosition(x,y);
         
         ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
@@ -41,6 +42,6 @@ public class DrawerToMagicPlotterAdapter extends DrawPanelController implements 
     @Override
     public String toString()
     {
-        return "Working Drawer";
+        return "Dotted Line Drawer";
     }
 }
