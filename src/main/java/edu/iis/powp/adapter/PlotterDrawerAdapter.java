@@ -1,6 +1,7 @@
 package edu.iis.powp.adapter;
 
 import edu.iis.client.plottermagic.IPlotter;
+import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -9,11 +10,11 @@ import edu.kis.powp.drawer.shape.LineFactory;
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class MyAdapter extends DrawPanelController implements IPlotter
+public class PlotterDrawerAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
 	
-    public MyAdapter() {
+    public PlotterDrawerAdapter() {
 		super();
 	}
     
@@ -28,15 +29,19 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     public void drawTo(int x, int y)
     {
         ILine line = LineFactory.getBasicLine();
-    	line.setStartCoordinates(this.startX, this.startY);
+      	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-
-		drawLine(line);
+        //added code and commented below line in order to implement adapter
+         //drawLine(line);
+        setPosition(x,y);
+        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
+        
+        
     }
-
+    //changed return value of toString
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "It is plotter-drawer adapter !";
     }
 }
