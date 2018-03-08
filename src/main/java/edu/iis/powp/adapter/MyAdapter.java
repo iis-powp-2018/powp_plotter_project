@@ -4,6 +4,7 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
+import edu.iis.powp.appext.*;
 
 
 /**
@@ -15,6 +16,7 @@ public class MyAdapter extends DrawPanelController implements IPlotter
 	
     public MyAdapter() {
 		super();
+		
 	}
     
 	@Override
@@ -30,13 +32,15 @@ public class MyAdapter extends DrawPanelController implements IPlotter
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
+        this.startX = x;
+        this.startY = y;
 
-		drawLine(line);
+        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
 
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Test Plotter";
     }
 }
