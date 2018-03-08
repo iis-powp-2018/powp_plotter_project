@@ -4,17 +4,16 @@ import edu.iis.client.plottermagic.IPlotter;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
-import javax.swing.JPanel;
 
 
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class MyAdapter extends DrawPanelController implements IPlotter
+public class PlotterDefaultAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
 	
-    public MyAdapter() {
+    public PlotterDefaultAdapter() {
 		super();
 	}
     

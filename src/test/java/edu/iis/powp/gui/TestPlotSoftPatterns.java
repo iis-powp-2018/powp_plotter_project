@@ -7,13 +7,15 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.PlotterDefaultAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 
@@ -29,9 +31,12 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
-	}
+	
+            context.addTest("Figure Joe ",   (e) -> { plotter.clearPanel();FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());context.getFreePanel().repaint(); });
+            context.addTest("Figure Joe 2",   (e) -> { plotter.clearPanel();FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());context.getFreePanel().repaint(); });
+
+
+        }
 
 	/**
 	 * Setup driver manager, and set default IPlotter for application.
@@ -43,11 +48,13 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
+		IPlotter plotter = new PlotterDefaultAdapter();
 		context.addDriver("Buggy Simulator", plotter);
                 ((DrawPanelController)plotter).initialize(context.getFreePanel());
                 
-		context.updateDriverInfo();
+                FiguresJoe.figureScript1(plotter);
+                 ((DrawPanelController)plotter).clearPanel();
+                 setClearHandle((DrawPanelController) plotter);
 	}
 
 	/**
@@ -100,4 +107,11 @@ public class TestPlotSoftPatterns
         });
     }
  
+    private static void setClearHandle ( DrawPanelController argPlotter )
+    {
+        plotter = argPlotter;
+    }
+    
+  
+    private static DrawPanelController plotter;
 }
