@@ -7,16 +7,18 @@ import edu.kis.powp.drawer.shape.LineFactory;
 
 
 /**
- * Plotter adapter to drawer with several bugs. 
+ * Plotter adapter to drawer with several bugs.
  */
-public class MyAdapter extends DrawPanelController implements IPlotter
-{ 
+public class SimulatedPlotterAdapter implements IPlotter
+{
+    private static String TAG = SimulatedPlotterAdapter.class.getSimpleName();
 	private int startX = 0, startY = 0;
-	
-    public MyAdapter() {
-		super();
+	private DrawPanelController drawPanelController;
+
+    public SimulatedPlotterAdapter(DrawPanelController drawPanelController) {
+		this.drawPanelController = drawPanelController;
 	}
-    
+
 	@Override
     public void setPosition(int x, int y)
     {
@@ -29,14 +31,15 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     {
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
-        line.setEndCoordinates(x, y);
+        this.setPosition(x, y);
+    	line.setEndCoordinates(x, y);
 
-		drawLine(line);
+		drawPanelController.drawLine(line);
     }
 
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Driver: " + TAG;
     }
 }
