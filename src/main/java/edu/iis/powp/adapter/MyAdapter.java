@@ -9,13 +9,14 @@ import edu.kis.powp.drawer.shape.LineFactory;
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class MyAdapter extends DrawPanelController implements IPlotter
+public class MyAdapter implements IPlotter
 { 
-	private int startX = 0, startY = 0;
-	
-    public MyAdapter() {
-		super();
-	}
+    private int startX = 0, startY = 0;
+    private DrawPanelController drawPanelController;
+            
+    public MyAdapter(DrawPanelController drawPanelController) {
+        this.drawPanelController = drawPanelController;
+    }
     
 	@Override
     public void setPosition(int x, int y)
@@ -31,8 +32,8 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
 
-		drawLine(line);
-                setPosition(x,y);
+        drawPanelController.drawLine(line);
+        setPosition(x,y);
     }
 
     @Override
