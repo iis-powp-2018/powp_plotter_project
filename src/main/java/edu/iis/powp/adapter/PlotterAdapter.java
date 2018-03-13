@@ -10,25 +10,22 @@ import edu.iis.powp.appext.*;
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class MyAdapter extends DrawPanelController implements IPlotter
+public class PlotterAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
 	
-    public MyAdapter() {
+    public PlotterAdapter() {
 		super();
-		
 	}
     
 	@Override
-    public void setPosition(int x, int y)
-    {
+    public void setPosition(int x, int y) {
         this.startX = x;
         this.startY = y;
     }
 
     @Override
-    public void drawTo(int x, int y)
-    {
+    public void drawTo(int x, int y) {
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
@@ -39,8 +36,7 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Test Plotter";
     }
 }
