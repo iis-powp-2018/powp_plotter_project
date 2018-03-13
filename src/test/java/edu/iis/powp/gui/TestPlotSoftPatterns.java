@@ -91,9 +91,7 @@ public class TestPlotSoftPatterns
 
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
-                
+
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
