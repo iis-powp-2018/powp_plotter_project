@@ -13,6 +13,7 @@ import edu.kis.powp.drawer.shape.LineFactory;
 public class LinePlotterAdapter extends DrawPanelController implements IPlotter
 {
 	private int startX = 0, startY = 0;
+    private ILine line = LineFactory.getDottedLine();
 
     public LinePlotterAdapter() {
 		super();
@@ -26,7 +27,6 @@ public class LinePlotterAdapter extends DrawPanelController implements IPlotter
 
     @Override
     public void drawTo(int x, int y) {
-        ILine line = LineFactory.getSpecialLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
         this.startX = x;
@@ -38,5 +38,13 @@ public class LinePlotterAdapter extends DrawPanelController implements IPlotter
     @Override
     public String toString() {
         return "Test Plotter";
+    }
+
+    public void setSpecialLineType(){
+        line = LineFactory.getSpecialLine();
+    }
+
+    public void setDottedLineType(){
+        line = LineFactory.getDottedLine();
     }
 }

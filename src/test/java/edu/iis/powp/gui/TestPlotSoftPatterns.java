@@ -13,6 +13,8 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.events.predefine.SelectDottedLineTypeOptionListener;
+import edu.iis.powp.events.predefine.SelectSpecialLineTypeOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
 
@@ -20,7 +22,8 @@ import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
 public class TestPlotSoftPatterns
 {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-		
+	private final static IPlotter speciaLinePlotter = new LinePlotterAdapter();
+
     /**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -47,11 +50,17 @@ public class TestPlotSoftPatterns
 		IPlotter plotter = new PlotterAdapter();
 		context.addDriver("Plotter Simulator", plotter);
 
-		IPlotter speciaLinePlotter = new LinePlotterAdapter();
 		context.addDriver("Special Line Plotter Simulator", speciaLinePlotter);
 
 		context.updateDriverInfo();
 	}
+
+    private static void setupLineTypeControl(Context context) {
+        Application.addComponent(LinePlotterAdapter.class);
+        context.addComponentMenu(LinePlotterAdapter.class, "Special Line Type");
+        context.addComponentMenuElement(LinePlotterAdapter.class, "Dotted Line Type", new SelectDottedLineTypeOptionListener(speciaLinePlotter));
+        context.addComponentMenuElement(LinePlotterAdapter.class, "Special Line Type", new SelectSpecialLineTypeOptionListener(speciaLinePlotter));
+    }
 
 	/**
 	 * Setup menu for adjusting logging settings.
@@ -83,6 +92,7 @@ public class TestPlotSoftPatterns
                 
             	setupDrivers(context);
             	setupPresetTests(context);
+            	setupLineTypeControl(context);
             	setupLogger(context);
             }
 
