@@ -43,7 +43,7 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new DrawerAdapter();
+		IPlotter plotter = new DrawerAdapter(ApplicationWithDrawer.getDrawPanelController());
 		context.addDriver("Buggy Simulator", plotter);
 
 		context.updateDriverInfo();
@@ -86,6 +86,7 @@ public class TestPlotSoftPatterns
         {
             public void run()
             {
+
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
                 
