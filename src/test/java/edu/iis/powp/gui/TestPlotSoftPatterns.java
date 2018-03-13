@@ -33,9 +33,7 @@ public class TestPlotSoftPatterns
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		context.addTest("Figure Joe 2", e -> {
-            FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
-        });
+		context.addTest("Figure Joe 2", e -> FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()));
 	}
 
 	/**
