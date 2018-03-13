@@ -30,7 +30,7 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -42,8 +42,8 @@ public class TestPlotSoftPatterns
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
-		
-		IPlotter plotter = new MyAdapter();
+
+		IPlotter plotter = new MyAdapter(ApplicationWithDrawer.getDrawPanelController());
 		context.addDriver("Buggy Simulator", plotter);
 
 		context.updateDriverInfo();
