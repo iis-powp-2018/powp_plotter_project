@@ -7,15 +7,18 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.DrawerAdapter;
+import edu.iis.powp.adapter.LinePlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
-import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.events.predefine.SelectTestFigureOneOptionListener;
+import edu.iis.powp.events.predefine.SelectTestFigureTwoOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
@@ -28,9 +31,10 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupPresetTests(Context context) {
-	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+	    SelectTestFigureOneOptionListener selectTestFigureOneOptionListener = new SelectTestFigureOneOptionListener();
+		SelectTestFigureTwoOptionListener selectTestFigureTwoOptionListener = new SelectTestFigureTwoOptionListener();
+		context.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
+		context.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
 	}
 
 	/**
@@ -43,8 +47,17 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
+		IPlotter plotter = new DrawerAdapter(ApplicationWithDrawer.getDrawPanelController());
 		context.addDriver("Buggy Simulator", plotter);
+
+		IPlotter basicLinePlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
+		context.addDriver("Basic Line Plotter", basicLinePlotter);
+
+		IPlotter dottedLinePlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+		context.addDriver("Dotted Line Plotter", dottedLinePlotter);
+
+		IPlotter specialLinePlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
+		context.addDriver("Special Line Plotter", specialLinePlotter);
 
 		context.updateDriverInfo();
 	}
@@ -86,11 +99,10 @@ public class TestPlotSoftPatterns
         {
             public void run()
             {
+
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
-                
+
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
