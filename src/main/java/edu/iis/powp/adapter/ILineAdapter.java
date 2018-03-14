@@ -1,15 +1,23 @@
 package edu.iis.powp.adapter;
 
 import edu.kis.powp.drawer.shape.ILine;
-import edu.kis.powp.drawer.shape.LineFactory;
 import edu.kis.powp.drawer.shape.line.AbstractLine;
+
 import java.awt.*;
 
-public abstract class ILineAdapter /*implements ILine */{
+public class ILineAdapter extends AbstractLine {
     private java.awt.Color color;
     private float thickness;
 
+    // w tej chwili nic się nawet nie rysuje
+    // tutaj bez sensu gdy odkomentować -> nie powinno się chyba mieć ILine w sobie
+    // jednoczesnie to super() nic nie daje bo to Abstrakcyjna klasa
+    // juz straciłam cierpliwość do tego podpunktu, chyba jednak potrzebuje po prostu zobaczyć rozwiązanie :(
+
+//    ILine line;
+
     public ILineAdapter(ILine line){
+        super();
 //        this.line = line;
     }
 
@@ -21,12 +29,12 @@ public abstract class ILineAdapter /*implements ILine */{
         this.thickness = thickness;
     }
 
-//    @Override
+    @Override
     public Color getColor() {
         return color;
     }
 
-//    @Override
+    @Override
     public float getThickness() {
         return thickness;
     }
