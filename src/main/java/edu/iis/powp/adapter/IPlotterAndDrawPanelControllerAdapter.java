@@ -8,17 +8,17 @@ import edu.kis.powp.drawer.shape.LineFactory;
 
 
 /**
- * Plotter adapter to drawer with several bugs. 
+ * Plotter adapter to drawer with several bugs.
  */
 public class IPlotterAndDrawPanelControllerAdapter extends DrawPanelController implements IPlotter
-{ 
+{
 	private int startX = 0, startY = 0;
-	
+
     public IPlotterAndDrawPanelControllerAdapter() {
 		super();
 	}
-    
-    
+
+
 	@Override
     public void setPosition(int x, int y)
     {
@@ -39,6 +39,6 @@ public class IPlotterAndDrawPanelControllerAdapter extends DrawPanelController i
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Simulator";
     }
 }

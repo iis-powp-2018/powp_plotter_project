@@ -45,13 +45,13 @@ public class TestPlotSoftPatterns
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
 		IPlotter plotter = new IPlotterAndDrawPanelControllerAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+		context.addDriver("Simulator", plotter);
 
 		context.updateDriverInfo();
 	}
 
 	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
+	 * Auxiliary routines to enable using Simulator.
 	 *
 	 * @param context Application context.
 	 */
