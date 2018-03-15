@@ -36,7 +36,7 @@ public class DottedLineDrawerToMagicPlotterAdapter extends DrawPanelController i
 
         setPosition(x,y);
         
-        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
+        super.drawLine(line);
     }
 
     @Override
