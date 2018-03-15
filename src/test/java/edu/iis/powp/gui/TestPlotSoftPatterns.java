@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.LinePlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -16,12 +17,14 @@ import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
 {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-		
+
+	
     /**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -30,8 +33,8 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 	  
-		context.addTest("Envelope", selectTestFigureOptionListener);
-		context.addTest("Second", selectTestFigureOptionListener);
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		context.addTest("Figure Joe 2", selectTestFigureOptionListener);
 	}
 
 	/**
@@ -41,27 +44,26 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
-		context.addDriver("Client Plotter", clientPlotter);
+		context.addDriver("Client Plotter v1", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
 		IPlotter plotter = new MyAdapter();
-		context.addDriver("Client Plotter 2", plotter);
+		context.addDriver("Client Plotter v2", plotter);
+		
+		IPlotter Solid = new LinePlotterAdapter(LineFactory.getBasicLine());
+		context.addDriver("Client Plotter v3 - Solid Lines", Solid);
+		
+		IPlotter Dotted = new LinePlotterAdapter(LineFactory.getDottedLine());
+		context.addDriver("Client Plotter v3 - Dotted Lines", Dotted);
+		
+		IPlotter Special = new LinePlotterAdapter(LineFactory.getSpecialLine());
+		context.addDriver("Client Plotter v3 - Special Lines", Special);
+
 
 		context.updateDriverInfo();
 	}
 	
-	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
-	 * 
-	 * @param context Application context.
-	 */
-	/*
-	private static void setupDefaultDrawerVisibilityManagement(Context context) {
-		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
-        context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
-        		new SelectChangeVisibleOptionListener(defaultDrawerWindow), false);
-        defaultDrawerWindow.setVisible(false);
-	}*/
+
 	
 	/**
 	 * Setup menu for adjusting logging settings.
@@ -77,7 +79,9 @@ public class TestPlotSoftPatterns
 		context.addComponentMenuElement(Logger.class, "Warning level", (ActionEvent e) -> LOGGER.setLevel(Level.WARNING));
 		context.addComponentMenuElement(Logger.class, "Severe level", (ActionEvent e) -> LOGGER.setLevel(Level.SEVERE));
 		context.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> LOGGER.setLevel(Level.OFF));
+		
 	}
+
 		
     /**
      * Launch the application.
@@ -90,12 +94,12 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                //setupDefaultDrawerVisibilityManagement(context);
+               
                 
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
+            	
             }
 
         });

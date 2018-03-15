@@ -39,6 +39,6 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     @Override
     public String toString()
     {
-        return "Client Plotter 2";
+        return "Client Plotter v2";
     }
 }
