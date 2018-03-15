@@ -14,10 +14,10 @@ import edu.kis.powp.drawer.shape.LineFactory;
 /**
  * Plotter adapter to drawer with several bugs. 
  */
-public class MyAdapter extends AbstractPlotter
+public class PlotterAdapter extends AbstractPlotter
 {
 
-    public MyAdapter(int x, int y) {
+    public PlotterAdapter(int x, int y) {
         super(x, y);
     }
 
