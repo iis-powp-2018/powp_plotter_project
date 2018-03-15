@@ -2,14 +2,14 @@ package edu.iis.powp.gui;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.LinePlotterAdapter;
+import edu.iis.powp.adapter.DrawerPlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -18,6 +18,7 @@ import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
@@ -34,6 +35,7 @@ public class TestPlotSoftPatterns
 		
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", e -> FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()));
+
 	}
 
 	/**
@@ -46,8 +48,17 @@ public class TestPlotSoftPatterns
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
-		IPlotter plotter = new MyAdapter(ApplicationWithDrawer.getDrawPanelController());
+		IPlotter plotter = new DrawerPlotterAdapter(ApplicationWithDrawer.getDrawPanelController());
 		context.addDriver("Buggy Simulator", plotter);
+
+		IPlotter lineDottedPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+		context.addDriver("Dotted line", lineDottedPlotter);
+
+		IPlotter lineSpecialPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
+		context.addDriver("Special line", lineSpecialPlotter);
+
+		IPlotter lineBasicPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
+		context.addDriver("Basic line", lineBasicPlotter);
 
 		context.updateDriverInfo();
 	}
