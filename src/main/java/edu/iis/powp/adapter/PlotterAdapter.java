@@ -2,32 +2,27 @@ package edu.iis.powp.adapter;
 
 import edu.iis.client.plottermagic.AbstractPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.client.plottermagic.preset.FiguresJane;
-import edu.iis.powp.app.Application;
-import edu.iis.powp.app.DriverManager;
-import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.kis.powp.drawer.panel.DrawPanelController;
-import edu.kis.powp.drawer.shape.ILine;
-import edu.kis.powp.drawer.shape.LineFactory;
 
-
-/**
- * Plotter adapter to drawer with several bugs. 
- */
 public class PlotterAdapter extends AbstractPlotter
 {
+    int x = 0;
+    int y = 0;
 
-    public PlotterAdapter(int x, int y) {
-        super(x, y);
+    private IPlotter iPlotter;
+
+    public PlotterAdapter(IPlotter iPlotter){
+        super(0,0);
+        this.iPlotter = iPlotter;
     }
 
     @Override
     public void drawTo(int i, int i1) {
-        ILine line = LineFactory.getBasicLine();
-        line.setStartCoordinates(this.getX(), this.getY());
-        line.setEndCoordinates(i, i1);
-        this.setPosition(i,i1);
-
-        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
+        if(getX()!=x || getX()!=y) {
+            x = getX(); y = getY();
+            iPlotter.setPosition(x, y);
+            iPlotter.drawTo(i, i1);
+        }
+        else
+            iPlotter.drawTo(i,i1);
     }
 }

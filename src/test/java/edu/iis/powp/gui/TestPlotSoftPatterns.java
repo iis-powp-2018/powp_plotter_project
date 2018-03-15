@@ -23,8 +23,7 @@ import edu.kis.powp.drawer.shape.LineFactory;
 public class TestPlotSoftPatterns
 {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	private static PlotterAdapter plotterAdapter = new PlotterAdapter(0,0);
-		
+
     /**
 	 * Setup test concerning preset figures in context.
 	 * 
@@ -33,7 +32,7 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(1);
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(2);
-		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(plotterAdapter);
+		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(3);
 
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);

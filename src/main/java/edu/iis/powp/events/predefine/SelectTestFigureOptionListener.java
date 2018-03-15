@@ -6,17 +6,14 @@ import java.awt.event.ActionListener;
 import edu.iis.client.plottermagic.AbstractPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJane;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.PlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
 
 public class SelectTestFigureOptionListener implements ActionListener
 {
     private int numberTest;
-    private AbstractPlotter plotter;
 
-    public SelectTestFigureOptionListener (AbstractPlotter plotter){
-        this.plotter=plotter;
-    }
     public SelectTestFigureOptionListener(int numberTest){
         this.numberTest=numberTest;
     }
@@ -29,6 +26,6 @@ public class SelectTestFigureOptionListener implements ActionListener
         else if(numberTest==2)
             FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
         else
-            FiguresJane.figureScript(plotter);
+            FiguresJane.figureScript(new PlotterAdapter(Application.getComponent(DriverManager.class).getCurrentPlotter()));
     }
 }
