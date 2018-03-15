@@ -8,17 +8,20 @@ import edu.kis.powp.drawer.shape.LineFactory;
 
 import javax.swing.*;
 
-public class PlotterDrawerAdapter extends DrawPanelController implements IPlotter
-{ 
-	private int startX = 0, startY = 0;
-	DrawPanelController drawPanel;
-	
-    public PlotterDrawerAdapter(DrawPanelController drawPanel) {
-		super();
-		this.drawPanel = drawPanel;
-	}
+public class LinePlotterAdapter extends DrawPanelController implements IPlotter
+{
+    private int startX = 0, startY = 0;
+    private ILine line;
+    DrawPanelController drawPanel;
 
-	@Override
+    public LinePlotterAdapter(DrawPanelController drawPanel, ILine line) {
+        super();
+        this.line = line;
+        this.drawPanel = drawPanel;
+
+    }
+
+    @Override
     public void setPosition(int x, int y)
     {
         this.startX = x;
@@ -28,17 +31,17 @@ public class PlotterDrawerAdapter extends DrawPanelController implements IPlotte
     @Override
     public void drawTo(int x, int y)
     {
-        ILine line = LineFactory.getBasicLine();
-    	line.setStartCoordinates(this.startX, this.startY);
+        line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-		setPosition(x,y);
-		drawPanel.drawLine(line);
+        setPosition(x,y);
+        drawPanel.drawLine(line);
+
     }
 
     @Override
     public String toString()
     {
-        return "Plotter Demo";
+        return "Plotter" + line.getColor().toString() + "Line";
     }
 
 
