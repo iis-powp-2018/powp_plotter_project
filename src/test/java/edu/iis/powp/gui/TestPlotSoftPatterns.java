@@ -12,6 +12,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.events.predefine.SelectTestCommandSimpleLineListener;
 import edu.iis.powp.events.predefine.SelectTestFigureJoeOneListener;
 import edu.iis.powp.events.predefine.SelectTestFigureJoeTwoListener;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -28,9 +29,10 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
             SelectTestFigureJoeOneListener selectTestFigureOneListener = new SelectTestFigureJoeOneListener();
 	    SelectTestFigureJoeTwoListener selectTestFigureTwoListener = new SelectTestFigureJoeTwoListener();
-		
+            SelectTestCommandSimpleLineListener selectTestCommandSimpleLineListener = new SelectTestCommandSimpleLineListener();
             context.addTest("Figure Joe 1", selectTestFigureOneListener);	
             context.addTest("Figure Joe 2", selectTestFigureTwoListener);
+            context.addTest("Command: Draw Line.", selectTestCommandSimpleLineListener);
 	}
 
 	/**
