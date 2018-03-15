@@ -45,13 +45,13 @@ public class TestPlotSoftPatterns
 
 		// adding Drawer as Plotter
 		IPlotter plotter = new PlotterDrawerAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+		context.addDriver("Demo Simulator", plotter);
 
 		context.updateDriverInfo();
 	}
 
 	/**
-	 * Auxiliary routines to enable using Buggy Simulator.
+	 * Auxiliary routines to enable using Demo Simulator.
 	 * 
 	 * @param context Application context.
 	 */
@@ -89,8 +89,7 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
+
                 
             	setupDrivers(context);
             	setupPresetTests(context);
