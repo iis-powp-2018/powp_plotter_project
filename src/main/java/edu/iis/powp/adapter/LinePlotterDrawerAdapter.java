@@ -6,14 +6,12 @@ import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 
-public class LinePlotterDrawerAdapter extends DrawPanelController implements IPlotter {
+public class LinePlotterDrawerAdapter implements IPlotter {
 
     private int startX = 0, startY = 0;
-    DrawPanelController drawPanelController;
-    ILine line;
+    private ILine line;
 
     public LinePlotterDrawerAdapter(DrawPanelController drawPanel, ILine basicLine) {
-        this.drawPanelController = drawPanel;
         this.line = basicLine;
     }
 
