@@ -11,7 +11,7 @@ public class LinePlotterDrawerAdapter implements IPlotter {
     private int startX = 0, startY = 0;
     private ILine line;
 
-    public LinePlotterDrawerAdapter(DrawPanelController drawPanel, ILine basicLine) {
+    public LinePlotterDrawerAdapter(ILine basicLine) {
         this.line = basicLine;
     }
 
