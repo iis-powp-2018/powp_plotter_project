@@ -1,0 +1,20 @@
+package edu.iis.powp.command;
+
+import edu.iis.client.plottermagic.IPlotter;
+
+public class CommandSetPosition implements PlotterCommand {
+	private int x;
+	private int y;
+	
+	public CommandSetPosition(int x, int y) {
+		super();
+		this.x = x;
+		this.y = y;
+	}
+	
+
+	@Override
+	public void Execute(IPlotter IPlotter) {
+		IPlotter.setPosition(this.x, this.y);
+	}
+}
