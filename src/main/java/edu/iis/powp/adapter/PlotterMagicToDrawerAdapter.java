@@ -18,7 +18,6 @@ public class PlotterMagicToDrawerAdapter extends DrawPanelController implements 
 	
 	public PlotterMagicToDrawerAdapter() {
 		super();
-		dpc = ApplicationWithDrawer.getDrawPanelController();		
 	}
 
 	@Override
@@ -36,14 +35,14 @@ public class PlotterMagicToDrawerAdapter extends DrawPanelController implements 
         line.setEndCoordinates(x, y);
         setPosition(x, y);
 
-		dpc.drawLine(line);
+        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
 		
     }
 
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Main Adapter";
     }
     
     /*
