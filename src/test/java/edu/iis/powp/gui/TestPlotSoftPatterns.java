@@ -17,6 +17,7 @@ import edu.iis.powp.events.predefine.SelectTestFigureJoeOneListener;
 import edu.iis.powp.events.predefine.SelectTestFigureJoeTwoListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 public class TestPlotSoftPatterns {
 
@@ -24,7 +25,7 @@ public class TestPlotSoftPatterns {
 
     /**
      * Setup test concerning preset figures in context.
-     * 
+     *
      * @param context
      *            Application context.
      */
@@ -38,7 +39,7 @@ public class TestPlotSoftPatterns {
 
     /**
      * Setup driver manager, and set default IPlotter for application.
-     * 
+     *
      * @param context
      *            Application context.
      */
@@ -47,15 +48,24 @@ public class TestPlotSoftPatterns {
         context.addDriver("Client Plotter", clientPlotter);
         Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
-        IPlotter plotter = new PlotterAndDrawPanelControllerAdapter(ApplicationWithDrawer.getDrawPanelController());
-        context.addDriver("Buggy Simulator", plotter);
+        IPlotter basicPlotter = new PlotterAndDrawPanelControllerAdapter(ApplicationWithDrawer.getDrawPanelController(),
+                LineFactory.getBasicLine());
+        context.addDriver("Basic Line Simulation", basicPlotter);
+
+        IPlotter dottedPlotter = new PlotterAndDrawPanelControllerAdapter(
+                ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+        context.addDriver("Dotted Line Simulation", dottedPlotter);
+
+        IPlotter specialPlotter = new PlotterAndDrawPanelControllerAdapter(
+                ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
+        context.addDriver("Special Line Simulation", specialPlotter);
 
         context.updateDriverInfo();
     }
 
     /**
      * Auxiliary routines to enable using Buggy Simulator.
-     * 
+     *
      * @param context
      *            Application context.
      */
@@ -68,7 +78,7 @@ public class TestPlotSoftPatterns {
 
     /**
      * Setup menu for adjusting logging settings.
-     * 
+     *
      * @param context
      *            Application context.
      */
