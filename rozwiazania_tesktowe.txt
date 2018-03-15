@@ -14,9 +14,14 @@ Być może można powiedzieć, że jest to Wzorzez "Dekorator".
 3.1.3
 Kompozyt :D
 
-
+3.1.6
+Można jeszcze odnaleźć wzorzec Strategii zastosowany w przypadku IPlottera.
 ***
 Roznica miedzy Adapterem klasowym i obiektowym:
 "Do stworzenia adaptera klasowego wykorzystywane jest wielokrotne dziedziczenie. Klasa adaptera dziedziczy prywatnie po klasie adaptowanej oraz publicznie implementuje interfejs klienta[1]. W przypadku tego adaptera wywołanie funkcji jest przekierowywane do bazowej klasy adaptowanej[4].
 
 W przypadku adaptera obiektowego klasa adaptera dziedziczy interfejs klienta oraz zawiera w sobie klasę adaptowaną. Rozwiązanie takie umożliwia oddzielenie klasy klienta od klasy adaptowanej[1]. Komplikuje to proces przekazywania żądania: klient wysyła je do adaptera wywołując jedną z jego metod. Następnie adapter konwertuje wywołanie na jedno bądź kilka wywołań i kieruje je do obiektu/obiektów adaptowanych. Te przekazują wyniki działania bezpośrednio do klienta[1][4]."
+
+
+Strategia:
+Strategia definiujemy wspólny interfejs dla wszystkich obsługiwanych algorytmów i zawierający wszystkie dozwolone operacje. Następnie implementujemy go w poszczególnych klasach dostarczających konkretne algorytmy. Dodatkowo, we wzorcu wyróżniamy także klienta korzystającego z algorytmów. Posiada on referencję do aktualnie używanej strategii oraz metodę ustawStrategie(), która pozwala ją zmienić.
