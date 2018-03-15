@@ -7,9 +7,6 @@ import edu.kis.powp.drawer.shape.LineFactory;
 import edu.iis.powp.appext.*;
 
 
-/**
- * Plotter adapter to drawer with several bugs. 
- */
 public class PlotterAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
@@ -37,6 +34,6 @@ public class PlotterAdapter extends DrawPanelController implements IPlotter
 
     @Override
     public String toString() {
-        return "Test Plotter";
+        return "Plotter Simulator";
     }
 }

@@ -7,22 +7,19 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.LinePlotterAdapter;
+import edu.iis.powp.adapter.SpecialLinePlotterAdapter;
 import edu.iis.powp.adapter.PlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.iis.powp.events.predefine.SelectDottedLineTypeOptionListener;
-import edu.iis.powp.events.predefine.SelectSpecialLineTypeOptionListener;
-import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
-import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
+import edu.iis.powp.events.predefine.*;
 
 
 public class TestPlotSoftPatterns
 {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	private final static IPlotter speciaLinePlotter = new LinePlotterAdapter();
+	private final static IPlotter specialLinePlotter = new SpecialLinePlotterAdapter(0,0);
 
     /**
 	 * Setup test concerning preset figures in context.
@@ -30,11 +27,9 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupPresetTests(Context context) {
-	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-		SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2();
-		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
-		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		context.addTest("Figure Joe 1", new SelectTestFigureOptionListener(1));
+		context.addTest("Figure Joe 2", new SelectTestFigureOptionListener(2));
+		context.addTest("Figure Jane" , new SelectTestFigureOptionListener(3, specialLinePlotter));
 	}
 
 	/**
@@ -49,17 +44,17 @@ public class TestPlotSoftPatterns
 		
 		IPlotter plotter = new PlotterAdapter();
 		context.addDriver("Plotter Simulator", plotter);
-
-		context.addDriver("Special Line Plotter Simulator", speciaLinePlotter);
+		context.addDriver("Special Line Plotter Simulator", specialLinePlotter );
 
 		context.updateDriverInfo();
 	}
 
     private static void setupLineTypeControl(Context context) {
-        Application.addComponent(LinePlotterAdapter.class);
-        context.addComponentMenu(LinePlotterAdapter.class, "Special Line Type");
-        context.addComponentMenuElement(LinePlotterAdapter.class, "Dotted Line Type", new SelectDottedLineTypeOptionListener(speciaLinePlotter));
-        context.addComponentMenuElement(LinePlotterAdapter.class, "Special Line Type", new SelectSpecialLineTypeOptionListener(speciaLinePlotter));
+        Application.addComponent(SpecialLinePlotterAdapter.class);
+        context.addComponentMenu(SpecialLinePlotterAdapter.class, "Special Line Type");
+        context.addComponentMenuElement(SpecialLinePlotterAdapter.class, "Basic Line Type", new SelectLineTypeOptionListener(1,specialLinePlotter));
+        context.addComponentMenuElement(SpecialLinePlotterAdapter.class, "Dotted Line Type", new SelectLineTypeOptionListener(2,specialLinePlotter));
+        context.addComponentMenuElement(SpecialLinePlotterAdapter.class, "Special Line Type", new SelectLineTypeOptionListener(3,specialLinePlotter));
     }
 
 	/**
@@ -95,7 +90,6 @@ public class TestPlotSoftPatterns
             	setupLineTypeControl(context);
             	setupLogger(context);
             }
-
         });
     }
 
