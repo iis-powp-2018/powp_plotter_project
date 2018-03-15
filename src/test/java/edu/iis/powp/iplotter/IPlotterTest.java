@@ -7,7 +7,7 @@ import edu.iis.client.plottermagic.preset.FiguresJoe;
 /**
  * Plotter test.
  * 
- * @author Dominik
+ * @author 202295
  */
 public class IPlotterTest
 {
