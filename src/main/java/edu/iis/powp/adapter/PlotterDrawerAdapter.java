@@ -16,11 +16,7 @@ public class PlotterDrawerAdapter extends DrawPanelController implements IPlotte
 		super();
 	}
 
-    @Override
-    public void initialize(JPanel drawArea) {
-    }
-
-    @Override
+	@Override
     public void setPosition(int x, int y)
     {
         this.startX = x;
