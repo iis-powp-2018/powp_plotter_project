@@ -29,13 +29,15 @@ public class TestPlotSoftPatterns
         SelectJoeTestSecondFigureOptionListener selectJoeTestSecondFigureOptionListener = new SelectJoeTestSecondFigureOptionListener();
 		SelectJaneTestFigureOptionListener selectJaneTestFigureOptionListener = new SelectJaneTestFigureOptionListener();
 		SelectCommandTestListener selectCommandTestListener = new SelectCommandTestListener();
-        SelectCommandComplexTestListener selectCommandComplexTestListener = new SelectCommandComplexTestListener();
+        SelectCommandComplexRectangleListener selectCommandComplexRectangleListener = new SelectCommandComplexRectangleListener();
+		SelectCommandComplexCircleListener selectCommandComplexCircleListener = new SelectCommandComplexCircleListener();
 		
 		context.addTest("Figure Joe 1", selectJoeTestFirstFigureOptionListener);
         context.addTest("Figure Joe 2", selectJoeTestSecondFigureOptionListener);
 		context.addTest("Figure Jane", selectJaneTestFigureOptionListener);
 		context.addTest("Command Simple Test", selectCommandTestListener);
-        context.addTest("Command Complex Test", selectCommandComplexTestListener);
+        context.addTest("Command Complex Rectangle Test", selectCommandComplexRectangleListener);
+		context.addTest("Command Complex Circle Test", selectCommandComplexCircleListener);
 	}
 
 	/**
