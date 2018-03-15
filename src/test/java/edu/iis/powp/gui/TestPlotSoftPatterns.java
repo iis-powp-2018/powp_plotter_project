@@ -48,13 +48,13 @@ public class TestPlotSoftPatterns
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
 
-		IPlotter linePlotter = new LinePlotterDrawerAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
+		IPlotter linePlotter = new LinePlotterDrawerAdapter(LineFactory.getBasicLine());
 		context.addDriver("Line Plotter", linePlotter);
 
-		IPlotter dottedPlotter = new LinePlotterDrawerAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+		IPlotter dottedPlotter = new LinePlotterDrawerAdapter( LineFactory.getDottedLine());
 		context.addDriver("Dotted Plotter", dottedPlotter);
 
-		IPlotter specialPlotter = new LinePlotterDrawerAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
+		IPlotter specialPlotter = new LinePlotterDrawerAdapter(LineFactory.getSpecialLine());
 		context.addDriver("Special Plotter", specialPlotter);
 
 		context.updateDriverInfo();
