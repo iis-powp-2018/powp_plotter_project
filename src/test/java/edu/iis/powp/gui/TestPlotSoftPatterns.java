@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.PlotterMagicToDrawerAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -28,9 +28,11 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupPresetTests(Context context) {
-	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+	    SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(1);
+		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(2);
+
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener1);
+		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
 	}
 
 	/**
@@ -40,10 +42,10 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
-		context.addDriver("Client Plotter", clientPlotter);
+		context.addDriver("Client Plotter [DO NOT USE]", clientPlotter);
 		
-		IPlotter plotter = new MyAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+		IPlotter plotter = new PlotterMagicToDrawerAdapter();
+		context.addDriver("Custom Adapter", plotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(plotter);
 
 		context.updateDriverInfo();
