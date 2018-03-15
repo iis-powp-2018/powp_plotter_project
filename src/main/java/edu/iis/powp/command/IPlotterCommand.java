@@ -5,10 +5,12 @@
  */
 package edu.iis.powp.command;
 
+import edu.iis.client.plottermagic.IPlotter;
+
 /**
  *
  * @author karko
  */
-public class IPlotterCommand {
-    
+public interface IPlotterCommand {
+    public void execute(IPlotter plotter);
 }

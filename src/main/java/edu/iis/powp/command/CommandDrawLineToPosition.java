@@ -5,10 +5,22 @@
  */
 package edu.iis.powp.command;
 
+import edu.iis.client.plottermagic.IPlotter;
 /**
  *
  * @author karko
  */
-public class CommandDrawLineToPosition {
+public class CommandDrawLineToPosition implements IPlotterCommand{
+
+    private int i, i1;
     
+    public CommandDrawLineToPosition(int i, int i1) {
+        this.i = i;
+        this.i1 = i1;
+    }
+
+    @Override
+    public void execute(IPlotter plotter) {
+        plotter.drawTo(i, i1);
+    }
 }
