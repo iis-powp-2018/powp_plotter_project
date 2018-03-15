@@ -34,7 +34,6 @@ public class PlotterMagicToDrawerAdapter extends DrawPanelController implements 
         ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-        // należało dodac ustawienie pozycji rysowania linii
         setPosition(x, y);
 
 		dpc.drawLine(line);
