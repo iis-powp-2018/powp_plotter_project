@@ -1,7 +1,8 @@
 package edu.iis.powp.gui;
 
-import java.awt.EventQueue;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -16,12 +17,18 @@ import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectJaneTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectJoeTestFirstFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectJoeTestSecondFigureOptionListener;
+import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 import edu.kis.powp.drawer.shape.line.AbstractLine;
 
 public class TestPlotSoftPatterns
 {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+
+    private static ILineAdapter BASIC_LINE = new ILineAdapter(LineFactory.getBasicLine());
+    private static ILineAdapter DOTTED_LINE = new ILineAdapter(LineFactory.getDottedLine());
+    private static ILineAdapter SPECIAL_LINE = new ILineAdapter(LineFactory.getSpecialLine());
+    private static ArrayList<ILineAdapter> LINES = new ArrayList<>();
 		
     /**
 	 * Setup tests concerning preset figures in context.
@@ -49,15 +56,13 @@ public class TestPlotSoftPatterns
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 
 
-		IPlotter basicPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
+		IPlotter basicPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), BASIC_LINE);
 		context.addDriver("Simulation Basic Line Plotter", basicPlotter);
 
-		IPlotter dottedPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+		IPlotter dottedPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), DOTTED_LINE);
 		context.addDriver("Simulation Dotted Line Plotter", dottedPlotter);
 
-		ILineAdapter line = new ILineAdapter(LineFactory.getSpecialLine());
-//		IPlotter specialPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
-		IPlotter specialPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), line);
+		IPlotter specialPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), SPECIAL_LINE);
 		context.addDriver("Simulation Special Line Plotter", specialPlotter);
 
 		context.updateDriverInfo();
@@ -78,6 +83,55 @@ public class TestPlotSoftPatterns
 		context.addComponentMenuElement(Logger.class, "Severe level", (ActionEvent e) -> LOGGER.setLevel(Level.SEVERE));
 		context.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> LOGGER.setLevel(Level.OFF));
 	}
+
+    /**
+     * Setup menu for changing line colour and thickness.
+     *
+     * @param context Application context.
+     */
+    private static void setupLineParams(Context context) {
+        LINES.add(BASIC_LINE);
+        LINES.add(DOTTED_LINE);
+        LINES.add(SPECIAL_LINE);
+
+        Application.addComponent(ILine.class);
+        context.addComponentMenu(ILine.class, "Line Parameters", 1);
+//        context.addComponentMenuElement(ILine.class, "Clear parameters", (ActionEvent e) -> {
+//            BASIC_LINE = new ILineAdapter(LineFactory.getBasicLine());
+//            DOTTED_LINE = new ILineAdapter(LineFactory.getDottedLine());
+//            SPECIAL_LINE = new ILineAdapter(LineFactory.getSpecialLine());
+//        });
+        context.addComponentMenuElement(ILine.class, "Colour: RED", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES){
+                line.setColor(Color.RED);
+            }
+        });
+        context.addComponentMenuElement(ILine.class, "Colour: BLUE", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES){
+                line.setColor(Color.BLUE);
+            }
+        });
+        context.addComponentMenuElement(ILine.class, "Colour: BLACK", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES){
+                line.setColor(Color.BLACK);
+            }
+        });
+        context.addComponentMenuElement(ILine.class, "Thickness: 2", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES){
+                line.setThickness(2);
+            }
+        });
+        context.addComponentMenuElement(ILine.class, "Thickness: 5", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES) {
+                line.setThickness(5);
+            }
+        });
+        context.addComponentMenuElement(ILine.class, "Thickness: 8", (ActionEvent e) -> {
+            for(ILineAdapter line : LINES) {
+                line.setThickness(8);
+            }
+        });
+    }
 		
     /**
      * Launch the application.
@@ -94,6 +148,7 @@ public class TestPlotSoftPatterns
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
+                setupLineParams(context);
             }
 
         });

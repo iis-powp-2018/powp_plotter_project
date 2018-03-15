@@ -35,6 +35,10 @@ public class LinePlotterAdapter implements IPlotter {
         setPosition(x, y);
     }
 
+    public ILine getLine() {
+        return line;
+    }
+
     @Override
     public String toString()
     {
