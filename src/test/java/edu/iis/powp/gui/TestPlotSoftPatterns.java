@@ -30,7 +30,10 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	
+		context.addTest("Figure Joe 2", selectTestFigureOptionListener); 	
+		context.addTest("Prostokąt", selectTestFigureOptionListener); 	
+		context.addTest("Trójkąt", selectTestFigureOptionListener);   
 	}
 
 	/**
