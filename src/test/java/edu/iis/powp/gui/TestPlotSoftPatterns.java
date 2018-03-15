@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.client.plottermagic.preset.FiguresJoe;
 import edu.iis.powp.adapter.LinePlotterAdapter;
 import edu.iis.powp.adapter.MyAdapter;
 import edu.iis.powp.app.Application;
@@ -18,6 +17,7 @@ import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
@@ -43,14 +43,20 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
-		context.addDriver("Client Plotter", clientPlotter);
+		context.addDriver("Client Plotter (Not working)", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
 		IPlotter plotter = new MyAdapter();
-		context.addDriver("Client Plotter 2.0", plotter);
+		context.addDriver("Client Plotter 2.0 (No line choice)", plotter);
 		
-		IPlotter plotterNew = new LinePlotterAdapter();
-		context.addDriver("Client Plotter 3.0", plotterNew);
+		IPlotter plotterSolid = new LinePlotterAdapter(LineFactory.getBasicLine());
+		context.addDriver("Client Plotter 3.0 - Solid Line", plotterSolid);
+		
+		IPlotter plotterDotted = new LinePlotterAdapter(LineFactory.getDottedLine());
+		context.addDriver("Client Plotter 3.0 - Dotted Line", plotterDotted);
+		
+		IPlotter plotterSpecial = new LinePlotterAdapter(LineFactory.getSpecialLine());
+		context.addDriver("Client Plotter 3.0 - Dotted Line (Color)", plotterSpecial);
 		
 		context.updateDriverInfo();
 	}
@@ -82,7 +88,7 @@ public class TestPlotSoftPatterns
 		context.addComponentMenuElement(Logger.class, "Severe level", (ActionEvent e) -> LOGGER.setLevel(Level.SEVERE));
 		context.addComponentMenuElement(Logger.class, "OFF logging", (ActionEvent e) -> LOGGER.setLevel(Level.OFF));
 	}
-		
+
     /**
      * Launch the application.
      */
@@ -96,10 +102,10 @@ public class TestPlotSoftPatterns
                 Context context = Application.getComponent(Context.class);
                 
                 setupDefaultDrawerVisibilityManagement(context);
-                
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
+       	
             }
 
         });
