@@ -39,13 +39,14 @@ public class TestPlotSoftPatterns
 	 * 
 	 * @param context Application context.
 	 */
+	
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
 		IPlotter plotter = new MyAdapter();
-		context.addDriver("Simulator", plotter);
+		context.addDriver("Adapter - normal", plotter);
 
 		context.updateDriverInfo();
 	}
