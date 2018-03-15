@@ -1,13 +1,14 @@
 package edu.iis.powp.adapter;
 
 import edu.iis.client.plottermagic.IPlotter;
+import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 
 
 /**
- * Plotter adapter to drawer with several bugs. 
+ * New plotter adapter to drawer. 
  */
 public class MyAdapter extends DrawPanelController implements IPlotter
 { 
@@ -27,16 +28,16 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     @Override
     public void drawTo(int x, int y)
     {
-        ILine line = LineFactory.getBasicLine();
+    	ILine line = LineFactory.getBasicLine();
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
-
-		drawLine(line);
+        setPosition(x,y);
+        ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
 
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Client plotter 2.0";
     }
 }
