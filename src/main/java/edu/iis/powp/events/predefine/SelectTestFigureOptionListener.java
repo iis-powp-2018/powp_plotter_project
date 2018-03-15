@@ -14,5 +14,6 @@ public class SelectTestFigureOptionListener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
         FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
+        FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
     }
 }
