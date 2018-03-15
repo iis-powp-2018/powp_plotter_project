@@ -5,19 +5,21 @@ import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 
+import javax.swing.*;
 
-/**
- * Plotter adapter to drawer with several bugs. 
- */
-public class MyAdapter extends DrawPanelController implements IPlotter
+public class PlotterDrawerAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
 	
-    public MyAdapter() {
+    public PlotterDrawerAdapter() {
 		super();
 	}
-    
-	@Override
+
+    @Override
+    public void initialize(JPanel drawArea) {
+    }
+
+    @Override
     public void setPosition(int x, int y)
     {
         this.startX = x;
@@ -37,6 +39,8 @@ public class MyAdapter extends DrawPanelController implements IPlotter
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return "Plotter Demo";
     }
+
+
 }
