@@ -25,11 +25,20 @@ public class LinePlotterAdapter extends DrawPanelController implements IPlotter 
     @Override
     public void drawTo(int x, int y)
     {
-        ILine line = LineFactory.getBasicLine();
+    	ILine line = lineMain;
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
         setPosition(x,y);
         ApplicationWithDrawer.getDrawPanelController().drawLine(line);
     }
     
+    @Override
+    public String toString()
+    {
+    	if(lineMain.isDotted()) {
+    		return "Plotter adapter - Dotted Line";
+    	} else {
+    		return "Plotter adapter - Solid Line";
+    	}
+    }
 }

@@ -15,14 +15,14 @@ public class SelectTestFigureOptionListener implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
     	DrawPanelController controller = Application.getComponent(DrawPanelController.class);
+    	System.out.println(e.getActionCommand().toString());
     	if(e.getActionCommand().toString().equals("Envelope")) {
     		controller.clearPanel();
-        FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
+    		FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
     	}
-    	else
-    	{
+    	else {
     		controller.clearPanel();
-    	FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
+    		FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
     	}
     }
 }
