@@ -13,6 +13,8 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.command.RectangleFactory;
+import edu.iis.powp.command.RectangleTestListener;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
@@ -34,6 +36,9 @@ public class TestPlotSoftPatterns
 		
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	
 		context.addTest("Figure Joe 2", (e) -> {FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());});
+		
+		RectangleTestListener rectangleTestListiner = new RectangleTestListener();
+		context.addTest("Rectangle", rectangleTestListiner);
 	}
 
 	/**
