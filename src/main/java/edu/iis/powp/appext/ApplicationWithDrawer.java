@@ -47,7 +47,7 @@ public class ApplicationWithDrawer {
 		context.addComponentMenu(DrawPanelController.class, "Draw Panel", 0);
 		context.addComponentMenuElement(DrawPanelController.class, "Clear Panel", selectClearPanelOptionListener);
 		
-        //getDrawPanelController().initialize(context.getFreePanel());
+        getDrawPanelController().initialize(context.getFreePanel());
 	}
 
 	 /**
