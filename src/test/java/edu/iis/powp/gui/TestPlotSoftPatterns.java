@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.DrawPanelPlotterAdapter;
+import edu.iis.powp.adapter.LinePlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
@@ -17,6 +18,7 @@ import edu.iis.powp.events.predefine.SelectSecondTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectFirstTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
@@ -42,11 +44,19 @@ public class TestPlotSoftPatterns
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
+        DrawPanelController drawPanelController = ApplicationWithDrawer.getDrawPanelController();
 
-		IPlotter plotter = new DrawPanelPlotterAdapter(ApplicationWithDrawer.getDrawPanelController());
-		context.addDriver("Buggy Simulator", plotter);
+        IPlotter plotter = new DrawPanelPlotterAdapter(drawPanelController);
+        context.addDriver("Buggy Simulator", plotter);
 
+		IPlotter basicLinePlotter = new LinePlotterAdapter(drawPanelController, LineFactory.getBasicLine(), "Basic Line Plotter");
+        context.addDriver(basicLinePlotter.toString(), basicLinePlotter);
 
+        IPlotter dottedLinePlotter = new LinePlotterAdapter(drawPanelController, LineFactory.getDottedLine(), "Dotted Line Plotter");
+        context.addDriver(dottedLinePlotter.toString(), dottedLinePlotter);
+
+        IPlotter specialLinePlotter = new LinePlotterAdapter(drawPanelController, LineFactory.getSpecialLine(), "Special Line Plotter");
+        context.addDriver(specialLinePlotter.toString(), specialLinePlotter);
 
 		context.updateDriverInfo();
 	}
