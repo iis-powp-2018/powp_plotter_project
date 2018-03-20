@@ -5,26 +5,23 @@ import java.util.List;
 
 import edu.iis.client.plottermagic.IPlotter;
 
-public class ComplexCommand {
-	
-	private final IPlotter plotter;
+public class ComplexCommand implements PlotterCommand {
+
 	private List<PlotterCommand> listOfCommands;
 
-	public ComplexCommand(IPlotter plotter) {
-		
-		this.plotter = plotter;
+	public ComplexCommand() {
 		this.listOfCommands = new ArrayList<>();
 	}
-	
-	
 
-	void addCommand(PlotterCommand command) {
+	public void addCommand(PlotterCommand command) {
 		if (command != null) {
 			listOfCommands.add(command);
 		}
 	}
-	
-	public void performAll() {
+
+	@Override
+	public void execute(IPlotter plotter) {
 		listOfCommands.stream().forEach(command -> command.execute(plotter));
+		
 	}
 }
