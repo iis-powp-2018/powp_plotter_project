@@ -7,8 +7,8 @@ import edu.kis.powp.drawer.shape.LineFactory;
 
 /**
  * Drawer test.
- * 
- * @author Dominik
+ *
+ *
  */
 public class TestDrawer
 {
