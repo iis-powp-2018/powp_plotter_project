@@ -1,21 +1,23 @@
 package edu.iis.powp.gui;
 
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.powp.adapter.PlotterToDrawAdapter;
+import edu.iis.powp.adapter.LinePlotterDrawerAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
-import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
-import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionListener3;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionListener4;
+import edu.kis.powp.drawer.shape.LineFactory;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class TestPlotSoftPatterns
@@ -28,9 +30,23 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupPresetTests(Context context) {
-	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
+
+	    SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener1);
+
+		SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2();
+
+		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+
+		SelectTestFigureOptionListener3 selectTestFigureOptionListener3 = new SelectTestFigureOptionListener3();
+
+		context.addTest("Command square",selectTestFigureOptionListener3);
+
+		SelectTestFigureOptionListener4 selectTestFigureOptionListener4 = new SelectTestFigureOptionListener4();
+
+		context.addTest("Command Triangle",selectTestFigureOptionListener4);
+
 	}
 
 	/**
@@ -39,12 +55,20 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupDrivers(Context context) {
+
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
-		
-		IPlotter plotter = new MyAdapter();
-		context.addDriver("Buggy Simulator", plotter);
+
+
+		IPlotter linePlotter = new LinePlotterDrawerAdapter(LineFactory.getBasicLine());
+		context.addDriver("Line Plotter", linePlotter);
+
+		IPlotter dottedPlotter = new LinePlotterDrawerAdapter( LineFactory.getDottedLine());
+		context.addDriver("Dotted Plotter", dottedPlotter);
+
+		IPlotter specialPlotter = new LinePlotterDrawerAdapter(LineFactory.getSpecialLine());
+		context.addDriver("Special Plotter", specialPlotter);
 
 		context.updateDriverInfo();
 	}
@@ -54,13 +78,14 @@ public class TestPlotSoftPatterns
 	 * 
 	 * @param context Application context.
 	 */
-	private static void setupDefaultDrawerVisibilityManagement(Context context) {
+/*	private static void setupDefaultDrawerVisibilityManagement(Context context) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
         		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
         defaultDrawerWindow.setVisible(true);
-	}
-	
+
+	}*/
+
 	/**
 	 * Setup menu for adjusting logging settings.
 	 * 
@@ -88,9 +113,9 @@ public class TestPlotSoftPatterns
             {
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
-                
-                setupDefaultDrawerVisibilityManagement(context);
-                
+
+                //setupDefaultDrawerVisibilityManagement(context);
+
             	setupDrivers(context);
             	setupPresetTests(context);
             	setupLogger(context);
