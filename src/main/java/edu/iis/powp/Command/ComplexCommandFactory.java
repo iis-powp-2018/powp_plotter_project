@@ -1,9 +1,4 @@
-package edu.iis.powp.command;
-
-import edu.iis.powp.Command.CommandDrawLineToPosition;
-import edu.iis.powp.Command.CommandSetPosition;
-import edu.iis.powp.Command.ComplexCommand;
-import edu.iis.powp.Command.IPlotterCommand;
+package edu.iis.powp.Command;
 
 import java.util.ArrayList;
 import java.util.Arrays;

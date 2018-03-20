@@ -2,7 +2,7 @@ package edu.iis.powp.events.predefine;
 
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
-import edu.iis.powp.command.ComplexCommandFactory;
+import edu.iis.powp.Command.ComplexCommandFactory;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

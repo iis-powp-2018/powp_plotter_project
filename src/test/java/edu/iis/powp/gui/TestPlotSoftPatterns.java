@@ -10,6 +10,8 @@ import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionListener3;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionListener4;
 import edu.kis.powp.drawer.shape.LineFactory;
 
 import java.awt.*;
@@ -35,6 +37,15 @@ public class TestPlotSoftPatterns
 		SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2();
 
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+
+		SelectTestFigureOptionListener3 selectTestFigureOptionListener3 = new SelectTestFigureOptionListener3();
+
+		context.addTest("Command square",selectTestFigureOptionListener3);
+
+		SelectTestFigureOptionListener4 selectTestFigureOptionListener4 = new SelectTestFigureOptionListener4();
+
+		context.addTest("Command Triangle",selectTestFigureOptionListener4);
+
 	}
 
 	/**
