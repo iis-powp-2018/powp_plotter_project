@@ -7,14 +7,13 @@ public class CommandSetPosition implements PlotterCommand {
 	private int y;
 	
 	public CommandSetPosition(int x, int y) {
-		super();
 		this.x = x;
 		this.y = y;
 	}
 	
 
 	@Override
-	public void Execute(IPlotter IPlotter) {
+	public void execute(IPlotter IPlotter) {
 		IPlotter.setPosition(this.x, this.y);
 	}
 }

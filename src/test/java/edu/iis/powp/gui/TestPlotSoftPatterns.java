@@ -13,6 +13,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.events.predefine.SelectTestFigureOptionComplexCommand;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener1;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
 
@@ -26,12 +27,15 @@ public class TestPlotSoftPatterns
 	 * 
 	 * @param context Application context.
 	 */
-	private static void setupPresetTests(Context context) {
+	private static void setupPresetTests(Context context) 
+	{		
 	    SelectTestFigureOptionListener1 selectTestFigureOptionListener1 = new SelectTestFigureOptionListener1();
 	    SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2();
+	    SelectTestFigureOptionComplexCommand selectTestFigureOptionComplexCommand = new SelectTestFigureOptionComplexCommand();
 
 	    context.addTest("Figure Joe 1", selectTestFigureOptionListener1);
 	    context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+	    context.addTest("Complex Command Square", selectTestFigureOptionComplexCommand);
 	}
 
 	/**
