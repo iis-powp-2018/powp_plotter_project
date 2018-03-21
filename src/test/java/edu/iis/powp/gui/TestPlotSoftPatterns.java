@@ -16,6 +16,7 @@ import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.factory.MyFigureJoe1Factory;
 import edu.iis.powp.factory.RectangleFactory;
 import edu.iis.powp.factory.SquareFactory;
 import edu.iis.powp.factory.TriangleFactory;
@@ -41,6 +42,7 @@ public class TestPlotSoftPatterns
 		context.addTest("Rectangle", (e)->{ RectangleFactory.prepareCommand(0, 0, 100, 150).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());});
 		context.addTest("Square", (e)->{ SquareFactory.prepareCommand(0, 0, 200).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());});
 		context.addTest("Triangle", (e)->{ TriangleFactory.prepareCommand(0, 0, 120, 120, 250, 50).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());});
+		context.addTest("My Figure Joe 1", (e)->{ MyFigureJoe1Factory.prepareCommand(0, 0, 200).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());});
 	}
 
 	/**

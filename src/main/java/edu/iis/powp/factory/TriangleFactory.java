@@ -7,12 +7,11 @@ import edu.iis.powp.command.PlotterCommand;
 
 public class TriangleFactory {
 	public static PlotterCommand prepareCommand(int xA, int yA, int xB, int yB, int xC, int yC) {
-	ComplexCommand complex = new ComplexCommand();
-	complex.addCommand(new CommandSetPosition(xA, yA));
-	complex.addCommand(new CommandDrawLineToPosition(xB,yB));
-	complex.addCommand(new CommandDrawLineToPosition(xC,yC));
-	
-	complex.addCommand(new CommandDrawLineToPosition(xA,yA));
-	return complex;
+		ComplexCommand complex = new ComplexCommand();
+		complex.addCommand(new CommandSetPosition(xA, yA))
+			.addCommand(new CommandDrawLineToPosition(xB, yB))
+			.addCommand(new CommandDrawLineToPosition(xC, yC))
+			.addCommand(new CommandDrawLineToPosition(xA, yA));
+		return complex;
 	}
 }

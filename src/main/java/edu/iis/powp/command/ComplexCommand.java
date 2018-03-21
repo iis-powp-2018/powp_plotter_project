@@ -13,10 +13,11 @@ public class ComplexCommand implements PlotterCommand {
 		this.listOfCommands = new ArrayList<>();
 	}
 
-	public void addCommand(PlotterCommand command) {
+	public ComplexCommand addCommand(PlotterCommand command) {
 		if (command != null) {
 			listOfCommands.add(command);
 		}
+		return this;
 	}
 
 	@Override
