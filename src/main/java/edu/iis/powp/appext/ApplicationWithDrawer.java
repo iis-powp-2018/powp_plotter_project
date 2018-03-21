@@ -41,6 +41,7 @@ public class ApplicationWithDrawer {
 	 * @param context Application context.
 	 */
 	private static void setupDrawerPlugin(Context context) {    
+		
 		SelectClearPanelOptionListener selectClearPanelOptionListener = new SelectClearPanelOptionListener();
 	
 		Application.addComponent(DrawPanelController.class);
