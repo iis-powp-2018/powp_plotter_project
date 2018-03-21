@@ -2,23 +2,22 @@ package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 
+
+import java.util.List;
+
 public class CommandComplex implements PlotterCommand {
 
-    private int x0,x1;
-    private int y0,y1;
+    private List<PlotterCommand> commands;
 
-    public CommandComplex(int x0, int y0, int x1, int y1) {
-        this.x0 = x0;
-        this.y0 = y0;
-        this.x1 = x1;
-        this.y1 = y1;
+    public CommandComplex(List<PlotterCommand> plotterCommand) {
+       commands = plotterCommand;
     }
 
     @Override
     public void execute(IPlotter plotter) {
-        plotter.setPosition(x0,y0);
-        plotter.drawTo(x1,y1);
-        plotter.setPosition(x1,y1);
-        plotter.drawTo(x1-100,y1-100);
+
+        for (PlotterCommand plotterCommand : commands) {
+            plotterCommand.execute(plotter);
+        }
     }
 }
