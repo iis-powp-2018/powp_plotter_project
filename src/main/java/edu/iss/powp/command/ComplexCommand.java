@@ -16,7 +16,7 @@ public class ComplexCommand implements PlotterCommand {
 	public void execute(IPlotter plotter) {
 		plotter.setPosition(x0, x1);
 		plotter.drawTo(y0, y1);
-		plotter.drawTo(y0+50, y1-50);
+		plotter.drawTo(y0-50, y1-50);
 		plotter.setPosition(y0, y1);
 		plotter.drawTo(y0-50, y1+50);
 	}
