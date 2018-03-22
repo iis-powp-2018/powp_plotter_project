@@ -2,23 +2,31 @@ package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ComplexCommand implements PlotterCommand {
 
-    private int x;
-    private int y;
+    private List<PlotterCommand> plotterCommands;
 
-    public ComplexCommand(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public ComplexCommand() {
+        plotterCommands = new ArrayList<>();
+    }
+
+    public ComplexCommand(List<PlotterCommand> plotterCommands) {
+        this.plotterCommands = plotterCommands;
+    }
+
+    public void addCommand(PlotterCommand command){
+        plotterCommands.add(command);
+    }
+
+    public void  addCommand(PlotterCommand command, int index){
+        plotterCommands.add(index, command);
     }
 
     @Override
     public void execute(IPlotter plotter) {
-        plotter.drawTo(10, 10);
-        plotter.setPosition(100, 100);
-        plotter.drawTo(-10, 10);
-        plotter.drawTo(100,-100);
-        plotter.setPosition(0,0);
-        plotter.drawTo(-10,-10);
+        plotterCommands.forEach(plotterCommand -> plotterCommand.execute(plotter));
     }
 }
