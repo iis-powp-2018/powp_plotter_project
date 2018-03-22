@@ -34,11 +34,13 @@ public class TestPlotSoftPatterns
 		SelectTestComplexCommandListener selectTestComplexCommandListener = new SelectTestComplexCommandListener();
 		SelectTestSetPositionListener selectTestSetPositionListener = new SelectTestSetPositionListener();
 		SelectTestDrawLineToListener selectTestDrawLineToListener = new SelectTestDrawLineToListener();
+		SelectTestRectangleListener selectTestRectangleListener = new SelectTestRectangleListener();
 		context.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
 		context.addTest("Complex Command", selectTestComplexCommandListener);
 		context.addTest("Set position (-20,-50)", selectTestSetPositionListener);
 		context.addTest("Draw line to (50, 20)", selectTestDrawLineToListener);
+		context.addTest("Rectangle", selectTestRectangleListener);
 	}
 
 	/**
