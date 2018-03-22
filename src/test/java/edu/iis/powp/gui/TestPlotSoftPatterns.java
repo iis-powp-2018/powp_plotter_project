@@ -39,6 +39,7 @@ public class TestPlotSoftPatterns
 		context.addTest("Set position 1 (0, 0)", new SelectSetPositionOneOptionListener());
 		context.addTest("Set position 2 (50, 0)", new SelectSetPositionTwoOptionListener());
 		context.addTest("Draw line to (25, 50)", new SelectDrawLineToPositionOptionListener());
+		context.addTest("Draw 50 x 50 square with factory", new SelectDrawRectangleOptionListener());
 	}
 
 	/**
