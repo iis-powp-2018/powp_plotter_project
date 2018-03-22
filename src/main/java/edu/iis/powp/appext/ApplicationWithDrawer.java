@@ -24,8 +24,8 @@ public class ApplicationWithDrawer {
 	        
 	    	Application.configureApplication();
 	    	
-	        Application.addComponent(DriverManager.class);
-	        Application.addComponent(Context.class);
+	       Application.addComponent(DriverManager.class);
+	       Application.addComponent(Context.class);
 	        
 	        Context context = Application.getComponent(Context.class);
 	        
