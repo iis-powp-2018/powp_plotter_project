@@ -1,12 +1,13 @@
 package edu.iis.powp.command;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.iis.client.plottermagic.IPlotter;
 
 public class ComplexCommand implements PlotterCommand {
 	
-	ArrayList<PlotterCommand> commandList  = new ArrayList<PlotterCommand>();
+	List<PlotterCommand> commandList  = new ArrayList<PlotterCommand>();
 	
 	@Override
 	public void execute(IPlotter driver) {
