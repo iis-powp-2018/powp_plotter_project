@@ -1,4 +1,4 @@
-package edu.iss.powp.command;
+package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 

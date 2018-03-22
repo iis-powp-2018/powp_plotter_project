@@ -1,26 +1,20 @@
-package edu.iss.powp.command;
+package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 
-public class CommandDrawLineToPosition implements PlotterCommand {
-
-	
+public class CommandSetPosition implements PlotterCommand{
 	private int x;
 	private int y;
 	
 	
-	
-	public CommandDrawLineToPosition(int x, int y) {
+	public CommandSetPosition(int x, int y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
-
-
-
+	
 	@Override
 	public void execute(IPlotter iPlotter) {
-		iPlotter.drawTo(x, y);
+		iPlotter.setPosition(x, y);
 	}
-
 }

@@ -2,6 +2,7 @@ package edu.iis.powp.gui;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,11 +14,12 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
+import edu.iis.powp.command.CommandsFactory;
+import edu.iis.powp.command.ComplexCommand;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
-import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
-import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.iis.powp.events.predefine.SelectTestFigureRectangle;
+import edu.iis.powp.events.predefine.SelectTestFigureTriangle;
 import edu.kis.powp.drawer.shape.LineFactory;
 
 
@@ -33,10 +35,15 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 	    SelectTestFigureOptionListener2 selectTestFigureOptionListener2 = new SelectTestFigureOptionListener2();
-	    
+	    SelectTestFigureRectangle selectTestFigureRectangle = new SelectTestFigureRectangle();
+	    SelectTestFigureTriangle selectTestFigureTriangle = new SelectTestFigureTriangle();
 		
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
+		context.addTest("Rectangle", selectTestFigureRectangle);
+		context.addTest("Triangle", selectTestFigureTriangle);
+
+
 	}
 
 	/**
