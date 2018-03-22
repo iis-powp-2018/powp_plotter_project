@@ -14,7 +14,7 @@ public class CommandSetPosition implements IPlotterCommand{
 
     private int i, i1;
     
-    public CommandSetPosition(IPlotter plotter, int i, int i1) {
+    public CommandSetPosition(int i, int i1) {
         this.i = i;
         this.i1 = i1; 
     }

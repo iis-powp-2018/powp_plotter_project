@@ -13,6 +13,9 @@ import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectTestCommandSimpleLineListener;
+import edu.iis.powp.events.predefine.SelectTestComplexCommandListener;
+import edu.iis.powp.events.predefine.SelectTestDrawRectangleListener;
+import edu.iis.powp.events.predefine.SelectTestDrawSquareListener;
 import edu.iis.powp.events.predefine.SelectTestFigureJoeOneListener;
 import edu.iis.powp.events.predefine.SelectTestFigureJoeTwoListener;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -30,9 +33,17 @@ public class TestPlotSoftPatterns
             SelectTestFigureJoeOneListener selectTestFigureOneListener = new SelectTestFigureJoeOneListener();
 	    SelectTestFigureJoeTwoListener selectTestFigureTwoListener = new SelectTestFigureJoeTwoListener();
             SelectTestCommandSimpleLineListener selectTestCommandSimpleLineListener = new SelectTestCommandSimpleLineListener();
+            SelectTestComplexCommandListener selectTestComplexCommandListener = new SelectTestComplexCommandListener();
+            SelectTestDrawRectangleListener selectTestDrawRectangleListener = new SelectTestDrawRectangleListener();
+            SelectTestDrawSquareListener selectTestDrawSquareListener = new SelectTestDrawSquareListener();
+            
             context.addTest("Figure Joe 1", selectTestFigureOneListener);	
             context.addTest("Figure Joe 2", selectTestFigureTwoListener);
             context.addTest("Command: Draw Line.", selectTestCommandSimpleLineListener);
+            context.addTest("Command: Complex Command.", selectTestComplexCommandListener);
+            context.addTest("Command: Draw Rectangle.", selectTestDrawRectangleListener);
+            context.addTest("Command: Draw Square.", selectTestDrawSquareListener);
+
 	}
 
 	/**
