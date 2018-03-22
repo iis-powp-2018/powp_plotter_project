@@ -2,40 +2,44 @@ package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 
-/**
- * Draws rectangle using IPlotter driver starting from point (0, 0)
- */
+import java.util.LinkedList;
+import java.util.List;
+
 public class ComplexCommand implements PlotterCommand  {
-    private int width;
-    private int height;
+    private List<PlotterCommand> commandList;
 
-    public ComplexCommand(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public ComplexCommand() {
+        commandList = new LinkedList<>();
     }
 
-    public int getWidth() {
-        return width;
+    public boolean addPlotterCommand(PlotterCommand command) {
+        return commandList.add(command);
     }
 
-    public void setWidth(int width) {
-        this.width = width;
+    public boolean addPlotterCommands(List<PlotterCommand> commands) {
+        return commandList.addAll(commands);
     }
 
-    public int getHeight() {
-        return height;
+    public void addPlotterCommand(PlotterCommand command, int position) {
+        commandList.add(position, command);
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public boolean removePlotterCommand(PlotterCommand command) {
+        return commandList.remove(command);
+    }
+
+    public PlotterCommand removePlotterCommand(int position) {
+        return commandList.remove(position);
+    }
+
+    public void clearCommandsList() {
+        commandList.clear();
     }
 
     @Override
     public void execute(IPlotter plotter) {
-        plotter.setPosition(0, 0);
-        plotter.drawTo(width, 0);
-        plotter.drawTo(width, height);
-        plotter.drawTo(0, height);
-        plotter.drawTo(0, 0);
+        for(PlotterCommand command : commandList) {
+            command.execute(plotter);
+        }
     }
 }
