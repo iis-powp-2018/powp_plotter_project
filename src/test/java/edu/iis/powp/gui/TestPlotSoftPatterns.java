@@ -13,10 +13,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
-import edu.iis.powp.events.predefine.SelectTestComplexCommandListener;
-import edu.iis.powp.events.predefine.SelectTestFigureOneOptionListener;
-import edu.iis.powp.events.predefine.SelectTestFigureTwoOptionListener;
+import edu.iis.powp.events.predefine.*;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -35,9 +32,13 @@ public class TestPlotSoftPatterns
 	    SelectTestFigureOneOptionListener selectTestFigureOneOptionListener = new SelectTestFigureOneOptionListener();
 		SelectTestFigureTwoOptionListener selectTestFigureTwoOptionListener = new SelectTestFigureTwoOptionListener();
 		SelectTestComplexCommandListener selectTestComplexCommandListener = new SelectTestComplexCommandListener();
+		SelectTestSetPositionListener selectTestSetPositionListener = new SelectTestSetPositionListener();
+		SelectTestDrawLineToListener selectTestDrawLineToListener = new SelectTestDrawLineToListener();
 		context.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
 		context.addTest("Complex Command", selectTestComplexCommandListener);
+		context.addTest("Set position (-20,-50)", selectTestSetPositionListener);
+		context.addTest("Draw line to (50, 20)", selectTestDrawLineToListener);
 	}
 
 	/**
