@@ -2,21 +2,16 @@ package edu.iis.powp.adapter;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.appext.ApplicationWithDrawer;
-import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.ILine;
 import edu.kis.powp.drawer.shape.LineFactory;
 
-
-/**
- * Plotter adapter to drawer with several bugs. 
- */
 public class PlotterMagicToDrawerAdapter extends DrawPanelController implements IPlotter
 { 
 	private int startX = 0, startY = 0;
-	private DrawPanelController dpc;
 	
-	public PlotterMagicToDrawerAdapter() {
+	public PlotterMagicToDrawerAdapter() 
+	{
 		super();
 	}
 
@@ -34,19 +29,12 @@ public class PlotterMagicToDrawerAdapter extends DrawPanelController implements 
     	line.setStartCoordinates(this.startX, this.startY);
         line.setEndCoordinates(x, y);
         setPosition(x, y);
-
         ApplicationWithDrawer.getDrawPanelController().drawLine(line);
-		
     }
 
     @Override
     public String toString()
     {
-        return "Main Adapter";
+        return "First Adapter";
     }
-    
-    /*
-     * NOWE FUNKCJE
-     */
-    
 }

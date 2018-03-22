@@ -25,7 +25,8 @@ public class TestPlotSoftPatterns
 	 *
 	 * @param context Application context.
 	 */
-	private static void setupPresetTests(Context context) {
+	private static void setupPresetTests(Context context) 
+	{
 	    SelectTestFigureOptionListener selectTestFigureOptionListener1 = new SelectTestFigureOptionListener(1);
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(2);
 
@@ -38,15 +39,15 @@ public class TestPlotSoftPatterns
 	 *
 	 * @param context Application context.
 	 */
-	private static void setupDrivers(Context context) {
+	private static void setupDrivers(Context context) 
+	{
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter [DO NOT USE]", clientPlotter);
 
 		IPlotter plotter = new PlotterMagicToDrawerAdapter();
-		context.addDriver("Custom Adapter", plotter);
+		context.addDriver("First Adapter", plotter);
+        context.addDriver("Second Adapter (custom lines)", speciaLinePlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(plotter);
-        context.addDriver("Special Line Adapter", speciaLinePlotter);
-
         context.updateDriverInfo();
 	}
 
@@ -55,7 +56,8 @@ public class TestPlotSoftPatterns
 	 *
 	 * @param context Application context.
 	 */
-	private static void setupLogger(Context context) {
+	private static void setupLogger(Context context) 
+	{
 		Application.addComponent(Logger.class);
 		context.addComponentMenu(Logger.class, "Logger", 0);
 		context.addComponentMenuElement(Logger.class, "Clear log", (ActionEvent e) -> context.flushLoggerOutput());
