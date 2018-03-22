@@ -33,10 +33,14 @@ public class TestPlotSoftPatterns
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener(1);
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(2);
 		SelectTestFigureOptionListener selectTestFigureOptionListener3 = new SelectTestFigureOptionListener(3);
+		SelectTestFigureOptionListener selectTestFigureOptionListener4 = new SelectTestFigureOptionListener(4);
+		SelectTestFigureOptionListener selectTestFigureOptionListener5 = new SelectTestFigureOptionListener(5);
 
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
-		context.addTest("Figure Jane", selectTestFigureOptionListener3);
+		context.addTest("Figure Jane", selectTestFigureOptionListener4);
+		context.addTest("Own Circle", selectTestFigureOptionListener5);
+		context.addTest("Own Square", selectTestFigureOptionListener3);
 
 	}
 
