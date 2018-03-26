@@ -14,4 +14,15 @@ public class CommandFactory {
         return command;
     }
 
+    public static ComplexCommand drawTriangle() {
+        ComplexCommand command = new ComplexCommand();
+
+        command.addCommand(new CommandSetPosition(105, 200));
+        command.addCommand(new CommandDrawLineToPosition(220, 120));
+        command.addCommand(new CommandDrawLineToPosition(10, 120));
+        command.addCommand(new CommandDrawLineToPosition(105, 200));
+
+        return command;
+    }
+
 }
