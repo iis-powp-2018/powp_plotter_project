@@ -13,6 +13,7 @@ import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectTestComplexCommandRectangeListener;
+import edu.iis.powp.events.predefine.SelectTestComplexCommandTriangleListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOneOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureTwoOptionListener;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -31,10 +32,12 @@ public class TestPlotSoftPatterns {
         SelectTestFigureOneOptionListener selectTestFigureOneOptionListener = new SelectTestFigureOneOptionListener();
         SelectTestFigureTwoOptionListener selectTestFigureTwoOptionListener = new SelectTestFigureTwoOptionListener();
         SelectTestComplexCommandRectangeListener selectTestComplexCommandRectangleListener = new SelectTestComplexCommandRectangeListener();
+        SelectTestComplexCommandTriangleListener selectTestComplexCommandTriangleListener = new SelectTestComplexCommandTriangleListener();
 
         context.addTest("Figure Joe 1", selectTestFigureOneOptionListener);
         context.addTest("Figure Joe 2", selectTestFigureTwoOptionListener);
         context.addTest("Rectangle Command", selectTestComplexCommandRectangleListener);
+        context.addTest("Traingle Command", selectTestComplexCommandTriangleListener);
     }
 
     /**
