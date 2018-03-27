@@ -7,7 +7,15 @@ import java.util.List;
 
 public class ComplexCommand implements PlotterCommand{
 
-    private List<PlotterCommand> plotterCommands = new ArrayList<>();
+    private List<PlotterCommand> plotterCommands;
+
+    public ComplexCommand() {
+        plotterCommands = new ArrayList<>();
+    }
+
+    public ComplexCommand(List<PlotterCommand> plotterCommands) {
+        this.plotterCommands = plotterCommands;
+    }
 
     public void addCommand(PlotterCommand command){
         this.plotterCommands.add(command);
