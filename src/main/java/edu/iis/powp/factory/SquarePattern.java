@@ -19,9 +19,6 @@ public class SquarePattern implements Pattern {
         commands.setCommand(new CommandDrawLineToPosition(120,120));
         commands.setCommand(new CommandDrawLineToPosition(-120,120));
         commands.setCommand(new CommandDrawLineToPosition(-120,-120));
-        commands.setCommand(new CommandDrawLineToPosition(120,120));
-        commands.setCommand(new CommandSetPosition(120,-120));
-        commands.setCommand(new CommandDrawLineToPosition(-120,120));
         commands.execute(plotter);
     }
 }
