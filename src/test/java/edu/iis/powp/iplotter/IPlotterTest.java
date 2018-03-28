@@ -2,6 +2,7 @@ package edu.iis.powp.iplotter;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.command.PlotterCommand;
 
 
 /**
