@@ -14,6 +14,8 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.command.RectangleCommandTestListener;
+import edu.iis.powp.command.TriangleCommandTestListener;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
@@ -35,6 +37,12 @@ public class TestPlotSoftPatterns
 		
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", e -> FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()));
+
+		RectangleCommandTestListener rectangleCommandTestListener = new RectangleCommandTestListener();
+		context.addTest("Wzorzec command: Prostok¹t", rectangleCommandTestListener);
+
+		TriangleCommandTestListener triangleCommandTestListener = new TriangleCommandTestListener();
+		context.addTest("Wzorzec command: Trójk¹t", triangleCommandTestListener);
 
 	}
 
@@ -59,6 +67,7 @@ public class TestPlotSoftPatterns
 
 		IPlotter lineBasicPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
 		context.addDriver("Basic line", lineBasicPlotter);
+
 
 		context.updateDriverInfo();
 	}
