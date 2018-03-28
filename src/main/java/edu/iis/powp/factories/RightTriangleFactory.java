@@ -13,7 +13,7 @@ public class RightTriangleFactory {
 	public static ComplexCommand createRectangle (int startPositionX, int startPositionY, int legA, int legB) {
 		plotterCommands.add(new CommandSetPosition(startPositionX,startPositionY));
         plotterCommands.add(new CommandDrawLineToPosition(startPositionX+legA,startPositionY));
-        plotterCommands.add(new CommandDrawLineToPosition(startPositionX,startPositionY+legB));
+        plotterCommands.add(new CommandDrawLineToPosition(startPositionX,startPositionY-legB));
         plotterCommands.add(new CommandDrawLineToPosition(startPositionX,startPositionY));
 		return new ComplexCommand(plotterCommands);				
 	}

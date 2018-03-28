@@ -14,9 +14,7 @@ import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.command.ComplexCommand;
-import edu.iis.powp.events.predefine.SelectComplexCommandOptionListener;
-import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
-import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.events.predefine.*;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.kis.powp.drawer.shape.LineFactory;
@@ -33,11 +31,13 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-	    SelectComplexCommandOptionListener select = new SelectComplexCommandOptionListener();
+	    SelectRectangleListener selectRectangleListener = new SelectRectangleListener();
+	    SelectRightTriangleListener selectRightTriangleListener = new SelectRightTriangleListener();
 		
 	    context.addTest("Envelope", selectTestFigureOptionListener);
 		context.addTest("Figure 2", selectTestFigureOptionListener);	       
-		context.addTest("Complex", selectTestFigureOptionListener);	
+		context.addTest("Right Triangle", selectRightTriangleListener);	
+		context.addTest("Rectangle", selectRectangleListener);	
 	}
 
 	/**
@@ -62,11 +62,7 @@ public class TestPlotSoftPatterns
 		context.addDriver("Plotter adapter - Dotted Line", plotterDotted);
 		
 		IPlotter plotterSpecial = new LinePlotterAdapter(LineFactory.getSpecialLine());
-		context.addDriver("Plotter adapter - Colored dotted Line)", plotterSpecial);
-		
-		IPlotter command = new LinePlotterAdapter(LineFactory.getBasicLine());
-		ComplexCommand cc = new ComplexCommand(0,0,100,100);
-		context.addDriver("Command", command);
+		context.addDriver("Plotter adapter - Colored dotted Line)", plotterSpecial);		
 
 		context.updateDriverInfo();
 	}

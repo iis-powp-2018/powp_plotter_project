@@ -11,12 +11,13 @@ import edu.iis.powp.command.ComplexCommand;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.iis.powp.factories.*;
 
-public class SelectRightTriangleListener implements ActionListener
-{
+public class SelectRightTriangleListener implements ActionListener {	
 
 	@Override
-    public void actionPerformed(ActionEvent e)
-    {
-		RightTriangleFactory.createRectangle(0, 0, 100, 100).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());;
+    public void actionPerformed(ActionEvent e) {
+		DrawPanelController controller = Application.getComponent(DrawPanelController.class);
+		System.out.println(e.getActionCommand().toString());
+		controller.clearPanel();
+		RightTriangleFactory.createRectangle(0, 0, 100, 100).execute(Application.getComponent(DriverManager.class).getCurrentPlotter());		
     }
 }
