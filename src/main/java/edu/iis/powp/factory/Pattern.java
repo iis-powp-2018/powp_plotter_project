@@ -1,5 +1,8 @@
 package edu.iis.powp.factory;
 
+import edu.iis.client.plottermagic.IPlotter;
+
 public interface Pattern {
-    void draw();
+
+    void draw(IPlotter plotter);
 }
