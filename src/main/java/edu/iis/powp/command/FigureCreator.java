@@ -30,4 +30,9 @@ public class FigureCreator {
             complexCommand.execute(iPlotter);
         }
     }
+
+    public static void CombinedScript(IPlotter iPlotter){
+        CommandGenerator commandGenerator = new CommandGenerator();
+        commandGenerator.execute(iPlotter);
+    }
 }

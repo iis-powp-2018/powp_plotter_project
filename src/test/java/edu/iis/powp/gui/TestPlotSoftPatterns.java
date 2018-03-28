@@ -36,6 +36,7 @@ public class TestPlotSoftPatterns
 		context.addTest("Figure Jane", new SelectTestFigureOptionListener(4));
 		context.addTest("Own Circle", new SelectTestFigureOptionListener(5));
 		context.addTest("Own Square", new SelectTestFigureOptionListener(3));
+		context.addTest("Combined script", new SelectTestFigureOptionListener(6));
 
 	}
 

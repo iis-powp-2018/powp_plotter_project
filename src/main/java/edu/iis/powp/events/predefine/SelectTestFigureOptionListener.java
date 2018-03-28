@@ -15,6 +15,7 @@ public class SelectTestFigureOptionListener implements ActionListener
 {
     private int numberTest;
     private IPlotter plotter;
+
     public SelectTestFigureOptionListener(int numberTest){
         this.numberTest=numberTest;
     }
@@ -33,5 +34,7 @@ public class SelectTestFigureOptionListener implements ActionListener
             FigureCreator.CircleScript(plotter);
         else if (numberTest==4)
             FiguresJane.figureScript(new PlotterAdapter(plotter));
+        else if (numberTest==6)
+            FigureCreator.CombinedScript(plotter);
     }
 }
