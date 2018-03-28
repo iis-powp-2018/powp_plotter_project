@@ -23,7 +23,7 @@ public class FigureCreator {
         complexCommand.addCommand(new CommandSetPosition(r,centerY));
         double x,y;
 
-        for(int i=0; i<=90; i++){
+        for(float i=0; i<=6.3; i+=0.1){
             x = centerX + r * Math.cos(i);
             y = centerY + r * Math.sin(i);
             complexCommand.addCommand(new CommandDrawLineToPosition((int)x,(int)y));
