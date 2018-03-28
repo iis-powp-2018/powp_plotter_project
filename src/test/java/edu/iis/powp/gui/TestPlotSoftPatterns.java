@@ -7,15 +7,20 @@ import java.util.logging.Logger;
 
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
-import edu.iis.powp.adapter.MyAdapter;
+import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.LinePlotterAdapter;
+import edu.iis.powp.adapter.DrawerPlotterAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.command.RectangleCommandTestListener;
+import edu.iis.powp.command.TriangleCommandTestListener;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
+import edu.kis.powp.drawer.shape.LineFactory;
 
 
 public class TestPlotSoftPatterns
@@ -30,7 +35,15 @@ public class TestPlotSoftPatterns
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
 		
-		context.addTest("Figure Joe 1", selectTestFigureOptionListener);	        
+		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
+		context.addTest("Figure Joe 2", e -> FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()));
+
+		RectangleCommandTestListener rectangleCommandTestListener = new RectangleCommandTestListener();
+		context.addTest("Wzorzec command: Prostok¹t", rectangleCommandTestListener);
+
+		TriangleCommandTestListener triangleCommandTestListener = new TriangleCommandTestListener();
+		context.addTest("Wzorzec command: Trójk¹t", triangleCommandTestListener);
+
 	}
 
 	/**
@@ -42,9 +55,19 @@ public class TestPlotSoftPatterns
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
 		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
-		
-		IPlotter plotter = new MyAdapter();
+
+		IPlotter plotter = new DrawerPlotterAdapter(ApplicationWithDrawer.getDrawPanelController());
 		context.addDriver("Buggy Simulator", plotter);
+
+		IPlotter lineDottedPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getDottedLine());
+		context.addDriver("Dotted line", lineDottedPlotter);
+
+		IPlotter lineSpecialPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getSpecialLine());
+		context.addDriver("Special line", lineSpecialPlotter);
+
+		IPlotter lineBasicPlotter = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(), LineFactory.getBasicLine());
+		context.addDriver("Basic line", lineBasicPlotter);
+
 
 		context.updateDriverInfo();
 	}
