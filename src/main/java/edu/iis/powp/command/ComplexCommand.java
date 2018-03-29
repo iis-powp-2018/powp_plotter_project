@@ -7,11 +7,18 @@ import edu.iis.client.plottermagic.IPlotter;
 
 public class ComplexCommand implements PlotterCommand{
 
-	List<PlotterCommand> CommandList = new ArrayList<PlotterCommand>();
+	private List<PlotterCommand> CommandList;
+	
+	public ComplexCommand(List<PlotterCommand> CommandList){
+		this.CommandList=CommandList;
+	}
+	public void addCommand(PlotterCommand Command) {
+		this.CommandList.add(Command);
+	}
 	
 	@Override
 	public void execute(IPlotter driver) {
-		// TODO Auto-generated method stub
+		CommandList.forEach(Command -> Command.execute(driver));
 		
 	}
 

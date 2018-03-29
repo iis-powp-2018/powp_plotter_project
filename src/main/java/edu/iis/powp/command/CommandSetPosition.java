@@ -7,7 +7,10 @@ public class CommandSetPosition implements PlotterCommand {
 	private int x;
 	private int y;
 
-
+	public CommandSetPosition(int x, int y) {
+				this.x=x;
+				this.y=y;
+			}
 	@Override
 	public void execute(IPlotter driver) {
 		driver.setPosition(x, y);
