@@ -22,7 +22,7 @@ public class SelectTestFigureOptionListener implements ActionListener
     		controller.clearPanel();
         FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
     	}
-    	else
+    	if(e.getActionCommand().toString().equals("Figure Joe 2"))
     	{
     		controller.clearPanel();
     	FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
