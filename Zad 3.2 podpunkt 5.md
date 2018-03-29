@@ -1,0 +1,4 @@
+# Zad 3.2
+## Podpunkt 5
+
+Z adaptera klasy warto korzystać, kiedy chcemy zespolić np. kilka sterowników przemysłowych różnych producentów tak, żebyśmy mogli komunikować się z każdym z nich za pomocą jednego spójnego interfejsu. Przykładowo mamy drukarkę firmy HP, która udostępnia metodę drukuj z parametrami rozmiarKartki, czyKolorowe oraz zawartoscWydruku. W pokoju obok stoi czarno-biała drukarka firmy Brother, która udostępnia metodę wydruk z tylko parametrami zawartoscWydruku oraz iloscKopii. Możemy stworzyć do obu tych drukarek adaptery, które utworzą nam spójny interfejs zawierający wszystkie parametry obu drukarek, ale wiedząc, że Brother jest tylko czarno biała zignorujemy parametr odnośnie koloru. Ilość kopii dokumentu w adapterze dla drukarki HP można zrealizować wywołując żądanie wydruku x razy.
