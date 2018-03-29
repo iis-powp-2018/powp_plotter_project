@@ -2,12 +2,12 @@ package edu.iis.powp.iplotter;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
-
+import edu.iis.powp.command.PlotterCommand;
 
 /**
  * Plotter test.
  * 
- * @author Dominik
+ * @author 202295
  */
 public class IPlotterTest
 {
