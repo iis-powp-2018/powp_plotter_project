@@ -36,6 +36,7 @@ public class TestPlotSoftPatterns
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener);
 		context.addTest("Rectangle", selectComplexCommandOptionListener);
+		context.addTest("Triangle", selectComplexCommandOptionListener);
 	}
 
 	/**
