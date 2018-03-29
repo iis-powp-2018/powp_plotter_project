@@ -30,6 +30,10 @@ public class TestPlotSoftPatterns
 		context.addTest("Figure Joe 1", new SelectTestFigureOptionListener(1));
 		context.addTest("Figure Joe 2", new SelectTestFigureOptionListener(2));
 		context.addTest("Figure Jane" , new SelectTestFigureOptionListener(3, specialLinePlotter));
+		context.addTest("CustomRectangle", new SelectTestFigureOptionListener(4));
+		context.addTest("CustomCircle", new SelectTestFigureOptionListener(5));
+		context.addTest("CustomTriangle", new SelectTestFigureOptionListener(6));
+		context.addTest("ConnectedFiguresJoe", new SelectTestFigureOptionListener(7));
 	}
 
 	/**

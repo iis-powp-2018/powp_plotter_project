@@ -10,6 +10,7 @@ import edu.iis.client.plottermagic.preset.FiguresJane;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.DriverManager;
+import edu.iis.powp.factory.FigureFactory;
 
 public class SelectTestFigureOptionListener implements ActionListener
 {
@@ -29,13 +30,30 @@ public class SelectTestFigureOptionListener implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        if(index == 1)
-            FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
-        else if(index == 2)
-            FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
-        else {
-            FiguresJane.figureScript(plotter);
-            LOGGER.info("Using Special Line Plotter Simulator");
+        switch(index){
+            case 1:
+                FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
+            case 2:
+                FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
+            case 3:
+                FiguresJane.figureScript(plotter);
+                LOGGER.info("Using Special Line Plotter Simulator");
+                break;
+            case 4:
+                FigureFactory.drawRectangle().draw(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
+            case 5:
+                FigureFactory.drawCircle().draw(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
+            case 6:
+                FigureFactory.drawTriangle().draw(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
+            case 7:
+                FigureFactory.drawConnectedJoe().draw(Application.getComponent(DriverManager.class).getCurrentPlotter());
+                break;
         }
+
     }
 }
