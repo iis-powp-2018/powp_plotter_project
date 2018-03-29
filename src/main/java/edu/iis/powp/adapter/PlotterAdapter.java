@@ -41,6 +41,6 @@ public class PlotterAdapter implements IPlotter
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+        return PlotterAdapter.class.getSimpleName();
     }
 }
