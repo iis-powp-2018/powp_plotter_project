@@ -5,7 +5,7 @@ import edu.iis.client.plottermagic.IPlotter;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ComplexCommand implements PlotterCommand  {
+public class ComplexCommand implements PlotterCommand, Cloneable  {
     private List<PlotterCommand> commandList;
 
     public ComplexCommand() {
@@ -34,6 +34,13 @@ public class ComplexCommand implements PlotterCommand  {
 
     public void clearCommandsList() {
         commandList.clear();
+    }
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        ComplexCommand newInstance = new ComplexCommand();
+        newInstance.commandList = new LinkedList<>(this.commandList);
+        return super.clone();
     }
 
     @Override

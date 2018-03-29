@@ -41,6 +41,7 @@ public class TestPlotSoftPatterns
 		context.addTest("Draw line to (25, 50)", new SelectDrawLineToPositionOptionListener());
 		context.addTest("Draw 50 x 50 square with factory", new SelectDrawRectangleOptionListener());
 		context.addTest("Draw 50 x 50 right triangle with factory", new SelectDrawRightTriangleOptionListener());
+		context.addTest("Draw Figure Joe 1 using PlotterCommand", new SelectDrawFigureJoeOneUsingPlotterCommandOptionListener());
 	}
 
 	/**
