@@ -9,11 +9,10 @@ public class CommandSetPosition implements PlotterCommand {
 
     @Override
     public void execute(IPlotter iPlotter) {
-        iPlotter.setPosition(x, y);
+        iPlotter.setPosition(this.x, this.y);
     }
 
     public CommandSetPosition(int x, int y) {
-        super();
         this.x = x;
         this.y = y;
     }

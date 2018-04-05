@@ -8,7 +8,7 @@ public class CommandDrawLineToPosition implements PlotterCommand{
     private int y;
 
     @Override public void execute(IPlotter iPlotter) {
-        iPlotter.drawTo(x,y);
+        iPlotter.drawTo(this.x,this.y);
     }
 
     public CommandDrawLineToPosition(int x, int y) {
