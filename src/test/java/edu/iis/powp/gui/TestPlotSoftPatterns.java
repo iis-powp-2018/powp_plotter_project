@@ -31,11 +31,13 @@ public class TestPlotSoftPatterns
 		SelectTestFigureOptionListener selectTestFigureOptionListener2 = new SelectTestFigureOptionListener(2);
 		SelectComplexCommandOptionListener selectComplexCommandOptionListener1 = new SelectComplexCommandOptionListener(1);
 		SelectComplexCommandOptionListener selectComplexCommandOptionListener2 = new SelectComplexCommandOptionListener(2);
+		SelectComplexCommandOptionListener selectComplexCommandOptionListener3 = new SelectComplexCommandOptionListener(3);
 
 		context.addTest("Figure Joe 1", selectTestFigureOptionListener1);
 		context.addTest("Figure Joe 2", selectTestFigureOptionListener2);
-		context.addTest("Custom figure 1", selectComplexCommandOptionListener1);
-		context.addTest("Custom figure 2", selectComplexCommandOptionListener2);
+		context.addTest("Custom figure - square", selectComplexCommandOptionListener1);
+		context.addTest("Custom figure - star", selectComplexCommandOptionListener2);
+		context.addTest("Custom figure - triangle", selectComplexCommandOptionListener3);
 	}
 
 	/**
