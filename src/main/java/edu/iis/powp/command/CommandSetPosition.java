@@ -13,7 +13,7 @@ public class CommandSetPosition implements PlotterCommand
 	}
 	
 	@Override
-	public void execute(IPlotter driver) 
+	public void execute(IPlotter driver)
 	{
 		driver.setPosition(x, y);
 	}

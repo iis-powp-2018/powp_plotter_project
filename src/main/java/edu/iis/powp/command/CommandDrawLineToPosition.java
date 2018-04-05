@@ -12,7 +12,7 @@ public class CommandDrawLineToPosition implements PlotterCommand
 		this.y = y;
 	}
 	@Override
-	public void execute(IPlotter driver) 
+	public void execute(IPlotter driver)
 	{
 		driver.drawTo(x, y);
 	}
