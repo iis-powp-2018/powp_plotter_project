@@ -4,7 +4,7 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import edu.iis.powp.events.predefine.SelectTestComplexCommandListener;
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.powp.adapter.LinePlotterAdapter;
@@ -14,6 +14,7 @@ import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iis.powp.events.predefine.SelectTestRectangleListener;
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
 import edu.iis.powp.adapter.DrawerPlotterAdapter;
@@ -28,9 +29,12 @@ public class TestPlotSoftPatterns
 	 * @param context Application context.
 	 */
 	private static void setupPresetTests(Context context) {
-	    
+		SelectTestComplexCommandListener selectTestComplexCommandListener = new SelectTestComplexCommandListener();
 		context.addTest("Figure Joe 1", new SelectTestFigureOptionListener("Figure Joe 1"));
-		context.addTest("Figure Joe 2", new SelectTestFigureOptionListener("Figure Joe 2"));	        
+		context.addTest("Figure Joe 2", new SelectTestFigureOptionListener("Figure Joe 2"));
+		context.addTest("Complex Command", selectTestComplexCommandListener);
+		SelectTestRectangleListener selectTestRectangleListener = new SelectTestRectangleListener();
+		context.addTest("Rectangle", selectTestRectangleListener);
 	}
 
 	/**
