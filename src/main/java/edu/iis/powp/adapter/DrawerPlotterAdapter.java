@@ -38,6 +38,6 @@ public class DrawerPlotterAdapter implements IPlotter
     @Override
     public String toString()
     {
-        return "@Q!$!@$!#@$(*#@&Q(%^*#@";
+    	return DrawerPlotterAdapter.class.getSimpleName();
     }
 }
