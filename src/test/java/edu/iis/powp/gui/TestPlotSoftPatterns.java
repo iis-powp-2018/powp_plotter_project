@@ -8,6 +8,9 @@ import java.util.logging.Logger;
 import edu.iis.client.plottermagic.ClientPlotter;
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
+import edu.iis.powp.adapter.BasicLinePlotterAdapter;
+import edu.iis.powp.adapter.DottedLinePlotterAdapter;
+import edu.iis.powp.adapter.LinePlotterAdapter;
 import edu.iis.powp.adapter.PlotterDefaultAdapter;
 import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
@@ -31,10 +34,8 @@ public class TestPlotSoftPatterns
 	 */
 	private static void setupPresetTests(Context context) {
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
-	
-            context.addTest("Figure Joe ",   (e) -> { plotter.clearPanel();FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter());context.getFreePanel().repaint(); });
-            context.addTest("Figure Joe 2",   (e) -> { plotter.clearPanel();FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter());context.getFreePanel().repaint(); });
-
+            context.addTest("Figure Joe ",   (e) -> { FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter()); });
+            context.addTest("Figure Joe 2",   (e) -> { FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()); });
 
         }
 
@@ -46,16 +47,19 @@ public class TestPlotSoftPatterns
 	private static void setupDrivers(Context context) {
 		IPlotter clientPlotter = new ClientPlotter();
 		context.addDriver("Client Plotter", clientPlotter);
-		Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
 		
-		IPlotter plotter = new PlotterDefaultAdapter();
-		context.addDriver("Buggy Simulator", plotter);
-                ((DrawPanelController)plotter).initialize(context.getFreePanel());
+		IPlotter plotter = new BasicLinePlotterAdapter ();
+		context.addDriver("Basic Line", plotter);
+
+                IPlotter linePlotterAdapter = new LinePlotterAdapter ();
+                context.addDriver("Special Line", linePlotterAdapter );           
                 
-                FiguresJoe.figureScript1(plotter);
-                 ((DrawPanelController)plotter).clearPanel();
-                 setClearHandle((DrawPanelController) plotter);
-	}
+                IPlotter dottedAdapter = new DottedLinePlotterAdapter ();
+                context.addDriver("Dotted Line", dottedAdapter ); 
+
+                Application.getComponent(DriverManager.class).setCurrentPlotter(clientPlotter);
+                context.updateDriverInfo();
+         }
 
 	/**
 	 * Auxiliary routines to enable using Buggy Simulator.
@@ -65,9 +69,9 @@ public class TestPlotSoftPatterns
 	private static void setupDefaultDrawerVisibilityManagement(Context context) {
 		DefaultDrawerFrame defaultDrawerWindow = DefaultDrawerFrame.getDefaultDrawerFrame();
         context.addComponentMenuElementWithCheckBox(DrawPanelController.class, "Default Drawer Visibility", 
-        		new SelectChangeVisibleOptionListener(defaultDrawerWindow), true);
-        defaultDrawerWindow.setVisible(true);
-	}
+                new SelectChangeVisibleOptionListener(defaultDrawerWindow), false);
+            defaultDrawerWindow.setVisible(false);
+        }
 	
 	/**
 	 * Setup menu for adjusting logging settings.
@@ -97,7 +101,7 @@ public class TestPlotSoftPatterns
                 ApplicationWithDrawer.configureApplication();
                 Context context = Application.getComponent(Context.class);
                 
-                //tupDefaultDrawerVisibilityManagement(context);
+                setupDefaultDrawerVisibilityManagement(context);
                 
             	setupDrivers(context);
             	setupPresetTests(context);
@@ -107,11 +111,4 @@ public class TestPlotSoftPatterns
         });
     }
  
-    private static void setClearHandle ( DrawPanelController argPlotter )
-    {
-        plotter = argPlotter;
-    }
-    
-  
-    private static DrawPanelController plotter;
 }
