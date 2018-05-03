@@ -16,7 +16,7 @@ public class ComplexCommand implements PlotterCommand {
 
     private List <PlotterCommand> commandsList;
 
-    ComplexCommand ( List <PlotterCommand> commandsList) {
+    public ComplexCommand ( List <PlotterCommand> commandsList) {
         this.commandsList = commandsList;
     }
     @Override

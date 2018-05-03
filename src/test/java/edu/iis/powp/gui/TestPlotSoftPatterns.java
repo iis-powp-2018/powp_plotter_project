@@ -18,6 +18,9 @@ import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
+import edu.iss.powp.shape.CircleFactoryTest;
+import edu.iss.powp.shape.RectangleFactoryTest;
+import edu.iss.powp.shape.SquareFactoryTest;
 
 import edu.kis.powp.drawer.panel.DefaultDrawerFrame;
 import edu.kis.powp.drawer.panel.DrawPanelController;
@@ -36,7 +39,18 @@ public class TestPlotSoftPatterns
 	    SelectTestFigureOptionListener selectTestFigureOptionListener = new SelectTestFigureOptionListener();
             context.addTest("Figure Joe ",   (e) -> { FiguresJoe.figureScript1(Application.getComponent(DriverManager.class).getCurrentPlotter()); });
             context.addTest("Figure Joe 2",   (e) -> { FiguresJoe.figureScript2(Application.getComponent(DriverManager.class).getCurrentPlotter()); });
+            
+            SquareFactoryTest squareFactoryTest;
+            squareFactoryTest = new SquareFactoryTest();
+            context.addTest("Square", squareFactoryTest);
 
+            RectangleFactoryTest rectangleTest;
+            rectangleTest = new RectangleFactoryTest();
+            context.addTest("Rectangle", rectangleTest);
+
+            CircleFactoryTest circleFactoryTest;
+            circleFactoryTest = new CircleFactoryTest();
+            context.addTest("Square", circleFactoryTest);            
         }
 
 	/**
