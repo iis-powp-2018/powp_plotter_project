@@ -7,11 +7,13 @@ import edu.kis.powp.drawer.shape.ILine;
 
 public class PlotterDefaultAdapter extends DrawPanelController implements IPlotter
 { 
-    protected int startX = 0, startY = 0;
+    protected int startX, startY;
     protected ILine line;
     
     public PlotterDefaultAdapter() {
-		super();
+            super();
+            startX = 0;
+            startY = 0;
 	}
     
     @Override
