@@ -2,7 +2,6 @@ package edu.iis.powp.command;
 
 import edu.iis.client.plottermagic.IPlotter;
 
-import java.sql.Driver;
 
 public class CommandSetPosition implements  IPlotterCommand{
 
