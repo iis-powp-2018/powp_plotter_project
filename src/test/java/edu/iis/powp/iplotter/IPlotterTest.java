@@ -2,7 +2,6 @@ package edu.iis.powp.iplotter;
 
 import edu.iis.client.plottermagic.IPlotter;
 import edu.iis.client.plottermagic.preset.FiguresJoe;
-import edu.iis.powp.decorator.InkManagerDecorator;
 
 
 /**
@@ -19,7 +18,7 @@ public class IPlotterTest
      */
     public static void main(String[] args)
     {
-        FiguresJoe.figureScript1(new InkManagerDecorator(plotter));
+        FiguresJoe.figureScript1(plotter);
     }
     
     private static class TestPlotter implements IPlotter
