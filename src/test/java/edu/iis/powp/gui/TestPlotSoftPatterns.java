@@ -13,6 +13,7 @@ import edu.iis.powp.app.Application;
 import edu.iis.powp.app.Context;
 import edu.iis.powp.app.DriverManager;
 import edu.iis.powp.appext.ApplicationWithDrawer;
+import edu.iis.powp.decorator.InkManagerDecorator;
 import edu.iis.powp.events.predefine.SelectChangeVisibleOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener;
 import edu.iis.powp.events.predefine.SelectTestFigureOptionListener2;
@@ -52,7 +53,7 @@ public class TestPlotSoftPatterns
 		context.addDriver("Basic Line", plotterBasicLine);
 
 		IPlotter plotterDottedLine = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(),LineFactory.getDottedLine());
-		context.addDriver("Dotted Line", plotterDottedLine);
+		context.addDriver("Dotted Line", new InkManagerDecorator(plotterDottedLine));
 
 		IPlotter plotterSpecialLine = new LinePlotterAdapter(ApplicationWithDrawer.getDrawPanelController(),LineFactory.getSpecialLine());
 		context.addDriver("Special Line", plotterSpecialLine);
